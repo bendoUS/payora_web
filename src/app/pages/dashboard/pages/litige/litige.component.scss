@@ -1,0 +1,118 @@
+.container {
+    padding: 30px 50px;
+}
+
+.dashHeader {
+    background-color: #FFF;
+    padding: 30px;
+    border-radius: 20px;
+
+    h3 {
+        font-size: 22px;
+        color: #202020;
+    }
+
+    p {
+        font-size: 13px;
+        color: #3c3c3c;
+        margin-bottom: 0;
+    }
+}
+
+.dashSelectorElements{
+    display: flex;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    .dashElementsItem{
+        background-color: #FFF;
+        width: 100%;
+        height: 110px;
+        border-radius: 15px;
+        font-size: 13px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+    .firstChild.dashElementsItem {
+        background-color: #83FF81;
+    }
+}
+
+.dashboardFooter{
+    margin-top: 20px;
+    .table-container {
+            overflow-x: auto;
+            border-radius: 20px;
+        }
+
+        .custom-table {
+            width: 100%;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            border-collapse: collapse;
+
+            .leftIconStepElem{
+                display: flex;
+                gap: 7.5px;
+                align-items: center;
+            }
+        }
+
+        .custom-table thead {
+            width: 100%;
+            background-color: #FFF;
+
+            th {
+                padding: 15px 35px;
+                border-bottom: 1px solid #d1d1d1;
+                text-align: left;
+                font-size: 13px;
+            }
+        }
+
+        .custom-table tbody tr {
+            width: 100%;
+            margin-bottom: px;
+        }
+
+        .custom-table tbody tr {
+            border-radius: 12px;
+            background-color: #FFF;
+        }
+
+        .custom-table th,
+        .custom-table td {
+            padding: 15px 35px;
+            text-align: left;
+            
+        }
+
+        /* Statut coloré */
+        .status {
+            font-weight: bold;
+            padding: 7.5px 30px;
+            font-size: 11px;
+            border-radius: 30px;
+        }
+
+        .status.actif {
+            color: #0a930a;
+            background-color: #e4fbe4;
+        }
+
+        .status.inactif {
+            color: #a17d00;
+            background-color: #fff9e0;
+        }
+
+        .status.suspendu {
+            color: #c00000;
+            background-color: #fde0e0;
+        }
+}

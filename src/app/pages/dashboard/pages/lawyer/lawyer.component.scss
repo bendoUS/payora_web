@@ -1,0 +1,83 @@
+.container {
+    padding: 20px;
+
+    .bodyPrincipal {
+        width: 100%;
+        height: calc(100vh - 40px);
+        background-color: #FFF;
+        border-radius: 20px;
+
+        .headerNav {
+            padding: 30px;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+
+            button {
+                background-color: #59F25A;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 13px;
+                border: none;
+                border-radius: 7.5px;
+                padding: 5px 10px;
+            }
+        }
+
+        .bodyElement {
+            padding: 30px 70px;
+            width: 80%;
+            margin-left: 10%;
+
+            .bodyElementTitle {
+
+                h1 {
+                    font-weight: bold;
+                    font-size: 35px;
+                }
+
+                p {
+                    font-size: 14px;
+                    color: #595959;
+                }
+            }
+
+            .bodyElementContent {
+                margin-top: 30px;
+
+                textarea {
+                    width: 100%;
+                    height: 200px;
+                    border-radius: 20px;
+                    border: 1px solid #000000;
+                    padding: 10px 20px;
+                    font-size: 13px;
+                    color: #1d1d1d;
+                }
+
+                .suggestElement {
+                    margin-top: 30px;
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-rows: repeat(3, 1fr);
+                    grid-column-gap: 0px;
+                    grid-row-gap: 0px;
+                    gap: 10px;
+
+                    .gridItem {
+                        width: 100%;
+                        height: 60px;
+                        background-color: #E4E4E4;
+                        border-radius: 10px;
+                        display: flex;
+                        align-items: center;
+                        padding: 0 15px;
+                        font-size: 13px;
+                        gap: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

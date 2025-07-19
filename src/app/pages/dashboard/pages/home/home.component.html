@@ -1,0 +1,195 @@
+<div class="container">
+    <div class="dashHeader">
+        <h3>Tableau de Bord</h3>
+        <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification </p>
+    </div>
+    <div class="bordFirstelement">
+        <div class="row">
+            <div class="col-4">
+                <div class="boardFirstcard">
+                    <div class="cardHeader">
+                        <h5>Revenue</h5>
+                        <div class="headIconTop">
+                            <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="24" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                        </div>
+                    </div>
+                    <div class="cardCtntElem">
+                        <div>
+                            <h2>$120,873</h2>
+                        </div>
+                        <div class="footerBottomCard">
+                            <div class="footerLeftBtn">
+                                <div
+                                    style="display: flex;background-color: #FFF;padding: 2.5px 10px;border-radius: 30px;opacity: .7;font-weight: 600;">
+                                    <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="12" color="#222325"
+                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                    + 12.5%
+                                </div>
+
+                                from last month
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="boardSecondcard">
+                    <div class="cardHeader">
+                        <h5>Revenue</h5>
+                        <div class="headIconTop">
+                            <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="24" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                        </div>
+                    </div>
+                    <div class="cardCtntElem">
+                        <div>
+                            <h2>89</h2>
+                        </div>
+                        <div class="footerBottomCard">
+                            <div class="footerLeftBtn">
+                                <div
+                                    style="display: flex;background-color: #59f25976;padding: 2.5px 10px;border-radius: 30px;opacity: .7;font-weight: 600;">
+                                    <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="12" color="#222325"
+                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                    + 12.5%
+                                </div>
+
+                                from last month
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="boardThirdcard">
+                    <div class="cardHeader">
+                        <h5>Revenue</h5>
+                        <div class="headIconTop">
+                            <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="24" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                        </div>
+                    </div>
+                    <div class="cardCtntElem">
+                        <div>
+                            <h2>$120,873</h2>
+                        </div>
+                        <div class="footerBottomCard">
+                            <div class="footerLeftBtn">
+                                <div
+                                    style="display: flex;background-color: #59f25976;padding: 2.5px 10px;border-radius: 30px;opacity: .7;font-weight: 600;">
+                                    <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="12" color="#222325"
+                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                    + 12.5%
+                                </div>
+
+                                from last month
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="boardSecondElement">
+        <div class="row">
+            <div class="col-8">
+                <div class="leftChartCtnr">
+                    <div class="cardHeader">
+                        <h5>Satisfaction client</h5>
+                    </div>
+                    <div class="cardBody">
+                        <div *ngIf="isBrowser">
+                            <canvas height="280" baseChart [data]="barChartData" [type]="'bar'"
+                                [options]="barChartOptions"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="rightChartCtnr">
+                    <div class="cardHeader">
+                        <h5>Satisfaction client</h5>
+                    </div>
+                    <div class="cardBody">
+                        <div *ngIf="isBrowser">
+                            <canvas baseChart height="180" [data]="doughnutChartData" [type]="'doughnut'"
+                                [options]="doughnutChartOptions"></canvas>
+                        </div>
+                        <div class="doughnutChartText">
+                            Le lorem ipsum est, en imprimerie, une suite de mots sans signification une suite de mots
+                            sans signification. Le bon type automatiquement. Le lorem ipsum est, en imprimerie, bon
+                            type.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="boardThirdElement">
+        <div class="row">
+            <div class="col-4">
+                <div class="leftElementCtnr">
+                    <div class="cardHeader">
+                        <h5>Actions rapides</h5>
+                    </div>
+                    <div class="cardBody">
+                        <div class="listCtnr">
+                            <div class="item">
+                                <div class="leftelement">
+                                    <hugeicons-icon [icon]="Agreement03Icon" [size]="24" color="#222325"
+                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                    <p>Créer un contrat</p>
+                                </div>
+                                <div class="iconBtnCtnr">
+                                    <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
+                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="leftelement">
+                                    <hugeicons-icon [icon]="ChartBreakoutSquareIcon" [size]="24" color="#222325"
+                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                    <p>Voir les estimations</p>
+                                </div>
+                                <div class="iconBtnCtnr">
+                                    <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
+                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="rightElementCtnr">
+                    <div class="table-container">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Concerné</th>
+                                    <th>Date de création</th>
+                                    <th>Valeur du contrat</th>
+                                    <th>États du contrat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of users">
+                                    <td>{{ user.name }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.role }}</td>
+                                    <td>
+                                        <span class="status" [ngClass]="{ 'actif': user.status === 'Actif', 'inactif': user.status === 'Inactif', 'suspendu': user.status === 'Suspendu' }">
+                                            {{ user.status }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

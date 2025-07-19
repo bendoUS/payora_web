@@ -1,0 +1,135 @@
+<div class="container">
+    <div class="dashHeader">
+        <h3>Transactions</h3>
+        <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification</p>
+    </div>
+    <div class="bordFirstelement">
+        <div class="row">
+            <div class="col-4">
+                <div class="boardFirstcard">
+                    <div class="cardHeader">
+                        <h5>Revenue</h5>
+                        <div class="headIconTop">
+                            <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="24" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                        </div>
+                    </div>
+                    <div class="cardCtntElem">
+                        <div>
+                            <h2>$120,873</h2>
+                        </div>
+                        <div class="footerBottomCard">
+                            <div class="footerLeftBtn">
+                                <div
+                                    style="display: flex;background-color: #FFF;padding: 2.5px 10px;border-radius: 30px;opacity: .7;font-weight: 600;">
+                                    <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="12" color="#222325"
+                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                    + 12.5%
+                                </div>
+
+                                from last month
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="boardSecondcard">
+                    <div class="cardHeader">
+                        <h5>Revenue</h5>
+                        <div class="headIconTop">
+                            <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="24" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                        </div>
+                    </div>
+                    <div class="cardCtntElem">
+                        <div>
+                            <h2>89</h2>
+                        </div>
+                        <div class="footerBottomCard">
+                            <div class="footerLeftBtn">
+                                <div
+                                    style="display: flex;background-color: #59f25976;padding: 2.5px 10px;border-radius: 30px;opacity: .7;font-weight: 600;">
+                                    <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="12" color="#222325"
+                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                    + 12.5%
+                                </div>
+
+                                from last month
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="boardThirdcard">
+                    <div class="cardHeader">
+                        <h5>Revenue</h5>
+                        <div class="headIconTop">
+                            <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="24" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                        </div>
+                    </div>
+                    <div class="cardCtntElem">
+                        <div>
+                            <h2>$120,873</h2>
+                        </div>
+                        <div class="footerBottomCard">
+                            <div class="footerLeftBtn">
+                                <div
+                                    style="display: flex;background-color: #59f25976;padding: 2.5px 10px;border-radius: 30px;opacity: .7;font-weight: 600;">
+                                    <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="12" color="#222325"
+                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                    + 12.5%
+                                </div>
+
+                                from last month
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboardFooter">
+        <div class="table-container">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Titre du contract</th>
+                        <th>Concerné</th>
+                        <th>Date de création</th>
+                        <th>Valeur du contrat</th>
+                        <th>États du contrat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>
+                            <div class="leftIconStepElem">
+                                <hugeicons-icon [icon]="FileEmpty01Icon" [size]="22" color="#222325"
+                                    [strokeWidth]="1.5"></hugeicons-icon>
+                                <div>
+                                    <div style="font-weight: 600;font-size: 13px;margin-bottom: 5px;">{{ user.name }}</div>
+                                    <div style="color: rgb(102, 102, 102);font-size: 11px;">Mise à jour le: 07-07-2025</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.role }}</td>
+                        <td>
+                            5000$
+                        </td>
+                        <td>
+                            <span class="status"
+                                [ngClass]="{ 'actif': user.status === 'Actif', 'inactif': user.status === 'Inactif', 'suspendu': user.status === 'Suspendu' }">
+                                {{ user.status }}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

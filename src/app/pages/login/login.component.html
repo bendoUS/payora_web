@@ -1,0 +1,52 @@
+<div class="bordCtner">
+    <div class="container-fluid text-center">
+        <div class="row align-items-start">
+            <div class="col leftLogPCntr">
+                <div>
+                    <div class="TopElementsCtnr">
+                        <img src="../../../assets/logo/logo.svg" alt="">
+                        <h4>Se connecter</h4>
+                        <p>Your digital lawyer in your pocket secure contracts, protected payments, zero stress.</p>
+                    </div>
+                    <div class="formCtnr">
+                        <form (ngSubmit)="onLogin()">
+                            <div>
+                                <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+                            </div>
+                            <div>
+                                <input type="password" [(ngModel)]="password" name="password" placeholder="Mot de passe"
+                                    required />
+                            </div>
+                            <p class="forgotPwd"><a href="">Forgot password?</a></p>
+                            <button type="submit">Je me connecte</button>
+                            <button type="submit" class="googlCnnx"><div class="btnInsideCtnr"><img src="../../../assets/logo/google.png" alt=""> Connexion avec google</div></button>
+                            <p class="haveAccount">Je n'ai pas encore de compte. <a href="/sign">J'en crée un</a></p>
+                        </form>
+                        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col rightLogPCntr">
+                <div class="ellipse17Rght">
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-template carouselSlide>
+                            <img src="../../../assets/PNG/Chubbs DrawKit_Vector_Illustrations-11.png" alt="">
+                            <h4>Connect with every application.</h4>
+                            <p>Everything you need in an easy customizable dasboard</p>
+                        </ng-template>
+                        <ng-template carouselSlide>
+                            <img src="../../../assets/PNG/Chubbs DrawKit_Vector_Illustrations-11.png" alt="">
+                            <h4>Connect with every application.</h4>
+                            <p>Everything you need in an easy customizable dasboard</p>
+                        </ng-template>
+                        <ng-template carouselSlide>
+                            <img src="../../../assets/PNG/Chubbs DrawKit_Vector_Illustrations-11.png" alt="">
+                            <h4>Connect with every application.</h4>
+                            <p>Everything you need in an easy customizable dasboard</p>
+                        </ng-template>
+                    </owl-carousel-o>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

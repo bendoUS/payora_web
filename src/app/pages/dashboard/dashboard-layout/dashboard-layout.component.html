@@ -1,0 +1,74 @@
+<div class="containerE">
+    <div class="menu">
+        <div class="menuHeader">
+            <div class="logo">
+                <img src="../../../../assets/logo/logo.svg" alt="Payora Logo">
+            </div>
+        </div>
+        <div class="menuContent">
+            <div class="menuItems">
+                <ul>
+                    <li (click)="goToPage('dashboard')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
+                            <hugeicons-icon [icon]="Home01Icon" [size]="20" color="#222325" [strokeWidth]="1.5" />
+                            <span>Tableau de bord</span>
+                        </a></li>
+                    <li (click)="goToPage('dashboard/contrat')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
+                            <hugeicons-icon [icon]="File02Icon" [size]="20" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                            <span>Contrat</span>
+                        </a></li>
+                    <li (click)="goToPage('dashboard/transaction')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
+                            <hugeicons-icon [icon]="Payment01Icon" [size]="20" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                            <span>Transactions</span>
+                        </a></li>
+                    <li (click)="goToPage('dashboard/accounting')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
+                            <hugeicons-icon [icon]="Invoice04Icon" [size]="20" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                            <span>Accounting</span>
+                        </a></li>
+                    <li (click)="goToPage('dashboard/lawyer')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
+                            <hugeicons-icon [icon]="JudgeIcon" [size]="20" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                            <span>Virtual lawyer</span>
+                        </a></li>
+                    <li (click)="goToPage('dashboard/litige')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
+                            <hugeicons-icon [icon]="Legal01Icon" [size]="20" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                            <span>Litiges</span>
+                        </a></li>
+                    <li (click)="goToPage('dashboard/affiliate')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
+                            <hugeicons-icon [icon]="ConnectIcon" [size]="20" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                            <span>Affiliations</span>
+                        </a></li>
+                </ul>
+            </div>
+            <div class="menuFooter">
+                <ul>
+                    <li class="active"><a class="menuItem" routerLink="/dashboard" routerLinkActive="active">
+                            <hugeicons-icon [icon]="EarthIcon" [size]="20" color="#222325" [strokeWidth]="1.5" />
+                            <span>Langues</span>
+                        </a></li>
+                    <li><a class="menuItem" routerLink="/dashboard" routerLinkActive="active">
+                            <img src="../../../../assets/avatar/pp.jpg" alt="">
+                            <span>Modifier le profil</span>
+                        </a></li>
+                    <li><a class="menuItem" routerLink="/dashboard" routerLinkActive="active">
+                            <hugeicons-icon [icon]="Settings01Icon" [size]="20" color="#FFF"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                            <span>Paramètres</span>
+                        </a></li>
+                    <li><a class="menuItem" routerLink="/login" routerLinkActive="active">
+                            <hugeicons-icon [icon]="Logout01Icon" [size]="20" color="#FFF"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                            <span>Deconnexion</span>
+                        </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <router-outlet></router-outlet>
+    </div>
+</div>

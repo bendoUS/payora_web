@@ -1,0 +1,91 @@
+.global-container {
+    padding: 30px 0;
+
+    .navBar {
+        .logo {
+            img {
+                width: 100px;
+                height: auto;
+            }
+        }
+    }
+
+    .bodyCtnr {
+        height: calc(100vh - 100px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .askCtnr {
+            .askHeader {
+                text-align: center;
+
+                h1 {
+                    font-size: 20px;
+                }
+
+                p {
+                    font-size: 14px;
+                    color: #666;
+                }
+            }
+            .askForm {
+                margin-top: 50px;
+                width: 110%;
+                margin-left: -5%;
+
+                .clientSelct,
+                .prestaSelct {
+                    border: 1px solid #C1C1C1;
+                    border-radius: 10px;
+                    padding: 15px;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .leftSetClient, .leftSetPresta {
+                        img{
+                            margin-top: 10px;
+                            height: 100px;
+                        }
+                        h5 {
+                            font-size: 14px;
+                            margin-top: 15px;
+                        }
+
+                        p {
+                            font-size: 12px;
+                            color: #666;
+                            margin-top: -5px;
+                            margin-bottom: 0;
+                        }
+                    }
+                    .rightSetClient, .rightSetPresta {
+                        .checkCase {
+                            border: 1px solid #000;
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 4px;
+                        }
+                    }
+                }
+            }
+            .askFooter{
+                display: flex;
+                justify-content: right;
+                margin-top: 30px;
+                width: 110%;
+                margin-left: -5%;
+
+                button{
+                    background-color: #59F25A;
+                    border: none;
+                    width: 100px;
+                    height: 35px;
+                    border-radius: 7px;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}

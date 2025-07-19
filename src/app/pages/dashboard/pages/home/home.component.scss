@@ -1,0 +1,272 @@
+.container {
+    padding: 30px 50px;
+}
+
+.dashHeader {
+    h3 {
+        font-size: 22px;
+        color: #333;
+    }
+
+    p {
+        font-size: 14px;
+        color: #3c3c3c;
+    }
+}
+
+.bordFirstelement {
+    width: 100%;
+    margin-top: 20px;
+
+    .boardFirstcard,
+    .boardSecondcard,
+    .boardThirdcard {
+        height: 200px;
+        width: 100%;
+        border-radius: 20px;
+        padding: 15px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .cardHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h5 {
+                font-weight: 400;
+            }
+
+            .headIconTop {
+                background-color: #FFF;
+                width: 35px;
+                height: 35px;
+                border-radius: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        .cardCtntElem {
+            h2 {
+                font-weight: 600;
+            }
+
+            .footerBottomCard {
+                display: flex;
+                align-items: center;
+
+                .footerLeftBtn {
+                    margin-bottom: 0;
+                    font-size: 13px;
+                    display: flex;
+                    gap: 8px;
+                }
+            }
+        }
+    }
+
+    .boardFirstcard {
+        background-color: #59F25A;
+    }
+
+    .boardSecondcard {
+        background-color: #FFF;
+
+        .headIconTop {
+            background-color: #59F25A !important;
+        }
+    }
+
+    .boardThirdcard {
+        background-color: #FFF;
+
+        .headIconTop {
+            background-color: #59F25A !important;
+        }
+    }
+}
+
+.boardSecondElement {
+    margin-top: 25px;
+
+    .leftChartCtnr {
+        width: 100%;
+        height: 350px;
+        background-color: #FFF;
+        border-radius: 20px;
+        padding: 20px;
+
+        .cardHeader {
+            margin-bottom: 20px;
+
+            h5 {
+                font-weight: 400;
+                font-size: 18px;
+            }
+        }
+
+    }
+
+    .rightChartCtnr {
+        width: 100%;
+        height: 350px;
+        background-color: #FFF;
+        border-radius: 20px;
+        padding: 20px;
+
+        .cardHeader {
+            h5 {
+                font-weight: 400;
+                font-size: 18px;
+            }
+        }
+
+        .cardBody {
+            .doughnutChartText {
+                font-size: 14px;
+                color: #333;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+.boardThirdElement {
+    margin-top: 25px;
+
+    .leftElementCtnr {
+        width: 100%;
+        height: 200px;
+        background-color: #FFF;
+        border-radius: 20px;
+        padding: 20px;
+
+        .cardHeader {
+            h5 {
+                font-weight: 400;
+                font-size: 18px;
+            }
+        }
+
+        .cardBody {
+
+            .listCtnr {
+                margin-top: 20px;
+
+                .item {
+                    width: 100%;
+                    background-color: #59F25A;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 10px;
+                    border-radius: 30px;
+                    margin-bottom: 15px;
+                    cursor: pointer;
+
+                    .leftelement {
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+
+                        p {
+                            margin-bottom: 0;
+                            font-size: 14px;
+                        }
+                    }
+
+                    .iconBtnCtnr {
+                        background-color: #FFF;
+                        border-radius: 30px;
+                        padding: 5px;
+                        width: 30px;
+                        height: 30px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+    }
+
+    .rightElementCtnr {
+        width: 100%;
+        margin-top: -15px;
+
+        .cardHeader {
+            h5 {
+                font-weight: 400;
+                font-size: 18px;
+            }
+        }
+
+        .table-container {
+            overflow-x: auto;
+            border-radius: 8px;
+        }
+
+        .custom-table {
+            width: 100%;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            border-collapse: separate;
+            /* 🔑 important */
+            border-spacing: 0 8px;
+        }
+
+        .custom-table thead {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+
+            th {
+                padding: 0 15px;
+            }
+        }
+
+        .custom-table tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            margin-bottom: 10px;
+        }
+
+        .custom-table tbody tr {
+            border-radius: 12px;
+            background-color: #FFF;
+        }
+
+        .custom-table th,
+        .custom-table td {
+            padding: 5px 15px;
+            text-align: left;
+        }
+
+        /* Statut coloré */
+        .status {
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 12px;
+        }
+
+        .status.actif {
+            color: #0a930a;
+            background-color: #e4fbe4;
+        }
+
+        .status.inactif {
+            color: #a17d00;
+            background-color: #fff9e0;
+        }
+
+        .status.suspendu {
+            color: #c00000;
+            background-color: #fde0e0;
+        }
+
+    }
+}

@@ -1,0 +1,116 @@
+.containerE {
+    width: 100%;
+    display: flex;
+
+    .menu {
+        height: 100%;
+        width: 300px;
+        background-color: #FFF;
+        padding: 20px 20px;
+        position: fixed;
+
+        .menuContent {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: calc(100% - 20px);
+        }
+
+        .menuHeader {
+            .logo {
+                img {
+                    width: 100px;
+                }
+            }
+        }
+
+        .menuItems {
+            margin-top: 40px;
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    margin-bottom: 10px;
+                    font-size: 14px;
+                    cursor: pointer;
+                    width: 100%;
+                    padding: 15px 20px;
+                    border-radius: 7.5px;
+
+                    &:hover {
+                        background-color: #cdcdcd2e;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: inherit;
+                        display: flex;
+                        align-items: center;
+                        gap: 7.5px;
+                    }
+                }
+
+                li.active {
+                    color: #FFF;
+                    background-color: #222325;
+                }
+            }
+        }
+
+        .menuFooter {
+            background-color: #222325;
+            border-radius: 7.5px;
+            padding: 20px 10px;
+
+            ul {
+                margin-bottom: 0;
+                padding-left: 0;
+                list-style: none;
+
+                li {
+                    font-size: 14px;
+                    color: #FFF;
+                    margin-bottom: 10px;
+                    height: 40px;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    padding: 0 10px;
+                    cursor: pointer;
+
+                    a {
+                        text-decoration: none;
+                        color: inherit;
+                        display: flex;
+                        align-items: center;
+                        gap: 7.5px;
+
+                        img{
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50px;
+                        }
+                    }
+                }
+                li.active {
+                    color: #222325;
+                    background-color: #FFF;
+
+                }
+                li:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    .body{
+        width: calc(100% - 300px);
+        margin-left: 300px;
+        height: 100%;
+        background-color: #F3F3F3;
+        position: fixed;
+        overflow-y: auto;
+    }
+}
