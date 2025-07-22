@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ArrowRight01Icon, FileEmpty01Icon, File01Icon, Invoice01Icon, Agreement01Icon, RemoveCircleHalfDotIcon, Legal01Icon } from '@hugeicons/core-free-icons';
+import { ArrowRight01Icon, FileEmpty01Icon, File01Icon, Invoice01Icon, Agreement01Icon, RemoveCircleHalfDotIcon, Legal01Icon, BubbleChatNotificationIcon, FileSyncIcon, FileValidationIcon } from '@hugeicons/core-free-icons';
 
 @Component({
   selector: 'app-litige',
@@ -15,6 +15,9 @@ export class LitigeComponent {
   Agreement01Icon = Agreement01Icon;
   RemoveCircleHalfDotIcon = RemoveCircleHalfDotIcon;
   Legal01Icon = Legal01Icon;
+  BubbleChatNotificationIcon = BubbleChatNotificationIcon;
+  FileSyncIcon = FileSyncIcon;
+  FileValidationIcon = FileValidationIcon;
 
 
   users = [

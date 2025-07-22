@@ -1,7 +1,7 @@
 <div class="container">
     <div class="dashHeader">
         <h3>Contrat</h3>
-        <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification </p>
+        <p>Gérez et suivez tous vos contrats actifs, inactifs et suspendus en un seul endroit.</p>
 
         <div class="dashHeaderSub">
             <h1>1.020.456</h1>
@@ -27,7 +27,7 @@
                     <div class="rightElement">
                         <div class="rightUnder">
                             <h3>340.000</h3>
-                            <p>Contrats total actifs</p>
+                            <p>Contrats total rejettés</p>
                         </div>
                         <div class="rightUnder">
                             <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
@@ -46,20 +46,20 @@
         </div>
         <div class="dashElementsItem">
             <hugeicons-icon [icon]="Invoice01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-            Contrats actifs
+            Contrats en cours
         </div>
         <div class="dashElementsItem">
             <hugeicons-icon [icon]="Agreement01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-            Contrats actifs
+            Contrats validé
         </div>
         <div class="dashElementsItem">
             <hugeicons-icon [icon]="RemoveCircleHalfDotIcon" [size]="24" color="#000000"
                 [strokeWidth]="1.5"></hugeicons-icon>
-            Contrats actifs
+            Contrats rejettés
         </div>
         <div class="dashElementsItem">
             <hugeicons-icon [icon]="Legal01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-            Contrats actifs
+            Contrats sous litiges
         </div>
     </div>
 
@@ -68,11 +68,11 @@
             <table class="custom-table">
                 <thead>
                     <tr>
-                        <th>Titre du contract</th>
+                        <th>Titre du contrat</th>
                         <th>Concerné</th>
                         <th>Date de création</th>
                         <th>Valeur du contrat</th>
-                        <th>États du contrat</th>
+                        <th>État</th>
                     </tr>
                 </thead>
                 <tbody>

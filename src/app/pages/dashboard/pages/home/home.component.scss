@@ -106,6 +106,12 @@
                 font-weight: 400;
                 font-size: 18px;
             }
+            p{
+                font-size: 12px;
+                margin-bottom: 0;
+                margin-top: -5px;
+                color: #333;
+            }
         }
 
     }
@@ -121,6 +127,12 @@
             h5 {
                 font-weight: 400;
                 font-size: 18px;
+            }
+            p{
+                font-size: 12px;
+                margin-bottom: 0;
+                margin-top: -5px;
+                color: #333;
             }
         }
 
@@ -233,6 +245,11 @@
             width: 100%;
             table-layout: fixed;
             margin-bottom: 10px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #d6d6d6;
+            }
         }
 
         .custom-table tbody tr {

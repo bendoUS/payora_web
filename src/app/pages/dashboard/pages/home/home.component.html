@@ -1,7 +1,7 @@
 <div class="container">
     <div class="dashHeader">
         <h3>Tableau de Bord</h3>
-        <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification </p>
+        <p>Vue d’ensemble de vos revenus, contrats et fonds disponibles. Surveillez votre activité et prenez des décisions rapides.</p>
     </div>
     <div class="bordFirstelement">
         <div class="row">
@@ -26,8 +26,7 @@
                                         [strokeWidth]="1.5"></hugeicons-icon>
                                     + 12.5%
                                 </div>
-
-                                from last month
+                                par rapport au mois dernier
                             </div>
                         </div>
                     </div>
@@ -36,7 +35,7 @@
             <div class="col-4">
                 <div class="boardSecondcard">
                     <div class="cardHeader">
-                        <h5>Revenue</h5>
+                        <h5>Contrats total</h5>
                         <div class="headIconTop">
                             <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="24" color="#222325"
                                 [strokeWidth]="1.5"></hugeicons-icon>
@@ -54,8 +53,7 @@
                                         [strokeWidth]="1.5"></hugeicons-icon>
                                     + 12.5%
                                 </div>
-
-                                from last month
+                                par rapport au mois dernier
                             </div>
                         </div>
                     </div>
@@ -64,7 +62,7 @@
             <div class="col-4">
                 <div class="boardThirdcard">
                     <div class="cardHeader">
-                        <h5>Revenue</h5>
+                        <h5>Fonds disponibles</h5>
                         <div class="headIconTop">
                             <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="24" color="#222325"
                                 [strokeWidth]="1.5"></hugeicons-icon>
@@ -82,8 +80,7 @@
                                         [strokeWidth]="1.5"></hugeicons-icon>
                                     + 12.5%
                                 </div>
-
-                                from last month
+                                par rapport au mois dernier
                             </div>
                         </div>
                     </div>
@@ -96,11 +93,12 @@
             <div class="col-8">
                 <div class="leftChartCtnr">
                     <div class="cardHeader">
-                        <h5>Satisfaction client</h5>
+                        <h5>Évolution des contrats</h5>
+                        <p>Suivez la création de nouveaux contrats et la croissance de votre portefeuille.</p>
                     </div>
                     <div class="cardBody">
                         <div *ngIf="isBrowser">
-                            <canvas height="280" baseChart [data]="barChartData" [type]="'bar'"
+                            <canvas height="260" baseChart [data]="barChartData" [type]="'bar'"
                                 [options]="barChartOptions"></canvas>
                         </div>
                     </div>
@@ -110,6 +108,7 @@
                 <div class="rightChartCtnr">
                     <div class="cardHeader">
                         <h5>Satisfaction client</h5>
+                        <p>Évolution du taux de satisfaction client</p>
                     </div>
                     <div class="cardBody">
                         <div *ngIf="isBrowser">
@@ -117,9 +116,8 @@
                                 [options]="doughnutChartOptions"></canvas>
                         </div>
                         <div class="doughnutChartText">
-                            Le lorem ipsum est, en imprimerie, une suite de mots sans signification une suite de mots
-                            sans signification. Le bon type automatiquement. Le lorem ipsum est, en imprimerie, bon
-                            type.
+                            Suivez le niveau de satisfaction de vos clients en temps réel pour améliorer la qualité de
+                            vos services et réduire les litiges.
                         </div>
                     </div>
                 </div>
@@ -137,25 +135,26 @@
                         <div class="listCtnr">
                             <div class="item">
                                 <div class="leftelement">
-                                    <hugeicons-icon [icon]="Agreement03Icon" [size]="24" color="#222325"
-                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                    <div class="iconBtnCtnr">
+                                        <hugeicons-icon [icon]="Agreement03Icon" [size]="20" color="#222325"
+                                            [strokeWidth]="1.5"></hugeicons-icon>
+                                    </div>
                                     <p>Créer un contrat</p>
                                 </div>
-                                <div class="iconBtnCtnr">
-                                    <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
-                                        [strokeWidth]="1.5"></hugeicons-icon>
-                                </div>
+                                <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
+                                    [strokeWidth]="1.5"></hugeicons-icon>
                             </div>
                             <div class="item">
                                 <div class="leftelement">
-                                    <hugeicons-icon [icon]="ChartBreakoutSquareIcon" [size]="24" color="#222325"
-                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                    <div class="iconBtnCtnr">
+                                        <hugeicons-icon [icon]="ChartBreakoutSquareIcon" [size]="20" color="#222325"
+                                            [strokeWidth]="1.5"></hugeicons-icon>
+                                    </div>
+
                                     <p>Voir les estimations</p>
                                 </div>
-                                <div class="iconBtnCtnr">
-                                    <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
-                                        [strokeWidth]="1.5"></hugeicons-icon>
-                                </div>
+                                <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
+                                    [strokeWidth]="1.5"></hugeicons-icon>
                             </div>
                         </div>
                     </div>
@@ -179,7 +178,8 @@
                                     <td>{{ user.email }}</td>
                                     <td>{{ user.role }}</td>
                                     <td>
-                                        <span class="status" [ngClass]="{ 'actif': user.status === 'Actif', 'inactif': user.status === 'Inactif', 'suspendu': user.status === 'Suspendu' }">
+                                        <span class="status"
+                                            [ngClass]="{ 'actif': user.status === 'Actif', 'inactif': user.status === 'Inactif', 'suspendu': user.status === 'Suspendu' }">
                                             {{ user.status }}
                                         </span>
                                     </td>

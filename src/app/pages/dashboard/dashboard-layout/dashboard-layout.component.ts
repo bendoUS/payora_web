@@ -26,6 +26,6 @@ export class DashboardLayoutComponent {
   constructor(private router: Router) {}
 
   goToPage(page: any) {
-    this.router.navigate(['/'+page]);
+    //this.router.navigate(['/'+page]);
   }
 }

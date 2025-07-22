@@ -8,37 +8,38 @@
         <div class="menuContent">
             <div class="menuItems">
                 <ul>
-                    <li (click)="goToPage('dashboard')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
-                            <hugeicons-icon [icon]="Home01Icon" [size]="20" color="#222325" [strokeWidth]="1.5" />
+                    <li><a class="menuItem" routerLink="/dashboard" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <hugeicons-icon [icon]="Home01Icon" [size]="20" [strokeWidth]="1.5" />
                             <span>Tableau de bord</span>
                         </a></li>
-                    <li (click)="goToPage('dashboard/contrat')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
-                            <hugeicons-icon [icon]="File02Icon" [size]="20" color="#222325"
+                    <li><a class="menuItem" routerLink="/dashboard/contrat" routerLinkActive="active">
+                            <hugeicons-icon [icon]="File02Icon" [size]="20"
                                 [strokeWidth]="1.5"></hugeicons-icon>
                             <span>Contrat</span>
                         </a></li>
-                    <li (click)="goToPage('dashboard/transaction')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
-                            <hugeicons-icon [icon]="Payment01Icon" [size]="20" color="#222325"
+                    <li><a class="menuItem" routerLink="/dashboard/transaction" routerLinkActive="active">
+                            <hugeicons-icon [icon]="Payment01Icon" [size]="20"
                                 [strokeWidth]="1.5"></hugeicons-icon>
                             <span>Transactions</span>
                         </a></li>
-                    <li (click)="goToPage('dashboard/accounting')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
-                            <hugeicons-icon [icon]="Invoice04Icon" [size]="20" color="#222325"
+                    <li><a class="menuItem" routerLink="/dashboard/accounting" routerLinkActive="active">
+                            <hugeicons-icon [icon]="Invoice04Icon" [size]="20"
                                 [strokeWidth]="1.5"></hugeicons-icon>
-                            <span>Accounting</span>
+                            <span>Comptabilité</span>
                         </a></li>
-                    <li (click)="goToPage('dashboard/lawyer')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
-                            <hugeicons-icon [icon]="JudgeIcon" [size]="20" color="#222325"
+                    <li><a class="menuItem" routerLink="/dashboard/lawyer" routerLinkActive="active">
+                            <hugeicons-icon [icon]="JudgeIcon" [size]="20"
                                 [strokeWidth]="1.5"></hugeicons-icon>
-                            <span>Virtual lawyer</span>
+                            <span>Juriste virtuel</span>
                         </a></li>
-                    <li (click)="goToPage('dashboard/litige')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
-                            <hugeicons-icon [icon]="Legal01Icon" [size]="20" color="#222325"
+                    <li><a class="menuItem" routerLinkActive="active" routerLink="/dashboard/litige">
+                            <hugeicons-icon [icon]="Legal01Icon" [size]="20"
                                 [strokeWidth]="1.5"></hugeicons-icon>
                             <span>Litiges</span>
                         </a></li>
-                    <li (click)="goToPage('dashboard/affiliate')" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a class="menuItem">
-                            <hugeicons-icon [icon]="ConnectIcon" [size]="20" color="#222325"
+                    <li><a class="menuItem" routerLinkActive="active" routerLink="/dashboard/affiliate">
+                            <hugeicons-icon [icon]="ConnectIcon" [size]="20"
                                 [strokeWidth]="1.5"></hugeicons-icon>
                             <span>Affiliations</span>
                         </a></li>
