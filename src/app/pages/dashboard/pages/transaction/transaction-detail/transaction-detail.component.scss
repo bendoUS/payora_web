@@ -1,0 +1,169 @@
+.bodyPrincipal {
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-color: #FFF;
+    border-radius: 20px;
+    display: flex;
+    padding: 15px;
+
+    .rightElementDiv{
+        height: 100%;
+        width: 50%;
+
+        .contentElementCtnr{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 80%;
+            justify-content: center;
+
+            .iconValDivCtnr{
+                background: rgba(89, 242, 90, 0.5);
+                width: 120px;
+                height: 120px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 60px;
+                box-shadow: 0px 0px 50px rgba(89, 242, 90, 0.7);
+                
+                img{
+                    width: 50%;
+                }
+            }
+            h5{
+                color: #434343;
+                font-size: 18px;
+                margin-top: 20px;
+            }
+            p{
+                width: 80%;
+                text-align: center;
+                color: #535353;
+                font-weight: 300;
+                font-size: 14px;
+            }
+            button{
+                width: 200px;
+                background-color: #177245;
+                padding: 10px;
+                font-size: 12px;
+                color: #FFF;
+                border: none;
+                border-radius: 7px;
+            }
+        }
+    }
+    .leftElementDiv{
+        height: 100%;
+        background-color: #F8F2F2;
+        width: 50%;
+        border-radius: 20px;
+        padding: 10px 20px;
+
+        .closeElementCtnr{
+
+            text-align: right;
+
+            button{
+                border: none;
+                background: none;
+            }
+        }
+        h5.title{
+            font-size: 16px;
+            font-weight: medium;
+        }
+        .DtlsElementDiv{
+            margin-top: 30px;
+            
+            h6.title{
+                text-transform: uppercase;
+                font-size: 10px;
+                color: #5a5a5a;
+                margin-bottom: 0;
+                font-weight: medium;
+            }
+            p.subtitle{
+                font-size: 13px;
+                font-weight: 600;
+            }
+        }
+        .recapBoard{
+            border: 1px solid #D2D2D2;
+            min-height: 80px;
+            border-radius: 12px;
+            padding: 10px 20px;
+            margin-top: 20px;
+
+            .itemElement{
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px solid #D2D2D2;
+                padding: 15px 0;
+                font-size: 13px;
+
+                .leftElement{
+                    color: #606060;
+                }
+                .rightElement{
+                    font-weight: 600;
+                }
+            }
+            .totalDiv{
+                text-align: right;
+                padding: 10px 0;
+                color: #50C878;
+                font-size: 13px;
+            }
+        }
+        .recapBoardBRE{
+            min-height: 80px;
+            border-radius: 12px;
+            padding: 10px 20px;
+            margin-top: 20px;
+
+            .itemElement{
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px solid #D2D2D2;
+                padding: 10px 0;
+                font-size: 13px;
+
+                .leftElement{
+                    color: #595959;
+                    display: flex;
+                    align-items: center;
+                    gap: 0px;
+
+                    button{
+                        border: none;
+                        background: none;
+                    }
+                }
+                .rightElement{
+                    font-weight: 600;
+                    color: #595959;
+                }
+            }
+            .removeBorder{
+                border: none;
+            }
+            .totalDiv{
+                text-align: right;
+                padding: 10px 0;
+                color: #50C878;
+                font-size: 13px;
+            }
+        }
+        .footerBordRigh{
+            display: flex;
+            justify-content: end;
+            flex-direction: column;
+            align-items: end;
+            height: 120px;
+            font-weight: bold;
+            color: #50C878;
+        }
+    }
+}

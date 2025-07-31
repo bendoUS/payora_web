@@ -8,6 +8,9 @@ import { AccountingComponent } from './pages/accounting/accounting.component';
 import { AffiliateComponent } from './pages/affiliate/affiliate.component';
 import { LawyerComponent } from './pages/lawyer/lawyer.component';
 import { LitigeComponent } from './pages/litige/litige.component';
+import { ContratDetailComponent } from './pages/contrat/contrat-detail/contrat-detail.component';
+import { ContratCreateComponent } from './pages/contrat/contrat-create/contrat-create.component';
+import { TransactionDetailComponent } from './pages/transaction/transaction-detail/transaction-detail.component';
 
 const routes: Routes = [
   {
@@ -15,8 +18,16 @@ const routes: Routes = [
     component: DashboardLayoutComponent,
     children: [
       { path: '', component: HomeComponent },
-      { path: 'contrat', component: ContratComponent },
-      { path: 'transaction', component: TransactionComponent },
+      {
+        path: 'contrat', component: ContratComponent, children: [
+          { path: 'detail', component: ContratDetailComponent },
+          { path: 'create', component: ContratCreateComponent }
+        ]
+      },
+      { path: 'transaction', component: TransactionComponent, children: [
+          { path: 'detail', component: TransactionDetailComponent }
+        ]
+       },
       { path: 'accounting', component: AccountingComponent },
       { path: 'affiliate', component: AffiliateComponent },
       { path: 'lawyer', component: LawyerComponent },

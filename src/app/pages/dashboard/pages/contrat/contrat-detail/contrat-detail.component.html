@@ -1,0 +1,98 @@
+<div class="bodyPrincipal">
+    <div class="headerNav">
+        <div class="leftElement">
+            <hugeicons-icon [icon]="Tick02Icon" [size]="35" color="#004A25" [strokeWidth]="2"></hugeicons-icon>
+        </div>
+        <div class="rightElement">
+            <h6>Suivi du contrat</h6>
+            <p>sur ton smartphone afin de recevoir les notifications push de ton activité, comme les messages,les
+                mentions, les demandes d'amis et les événements.</p>
+        </div>
+    </div>
+    <div class="bodyDivs">
+        <h4>Recapitulatifs</h4>
+        <div class="row">
+            <div class="col-6">
+                <div class="valDiv">
+                    <ul>
+                        <li>
+                            <div class="vaLabel">Valeur du contrat:</div>
+                            <div class="vaValue">25.590$</div>
+                        </li>
+                        <li>
+                            <div class="vaLabel">Engagé par:</div>
+                            <div class="vaValue">Selom Goerke</div>
+                        </li>
+                        <li>
+                            <div class="vaLabel">Contrat initié le:</div>
+                            <div class="vaValue">17 mai 2025 à 14h 43min</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="valDiv">
+                    <h5 class="sutTitle">Etat du contrat</h5>
+                    <ul>
+                        <li>
+                            <div class="vaLabel">Valeur du contrat:</div>
+                            <div class="vaValue">25.590$</div>
+                        </li>
+                        <li>
+                            <div class="vaLabel">Engagé par:</div>
+                            <div class="vaValue">Selom Goerke</div>
+                        </li>
+                        <li>
+                            <div class="vaLabel">Contrat initié le:</div>
+                            <div class="vaValue">17 mai 2025 à 14h 43min</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="valDiv">
+                    <h5 class="sutTitle">Etat de la livraison</h5>
+                    <ul>
+                        <li>
+                            <div class="vaLabel ral">Toutes les tâches du contrat sont exécutées.</div>
+                            <div class="vaValue">17 mai 2025 à 14h 43min</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="uploadDiv">
+                    <h5>Télécharger une preuve de travail</h5>
+                    <p>Partagez des preuves claires des tâches que vous avez accomplies, étape par étape.</p>
+                    <div class="icnCtnr">
+                        <hugeicons-icon [icon]="Upload03Icon" [size]="25" color="#004A25"
+                            [strokeWidth]="2"></hugeicons-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="actDiv">
+                    <h5>Validation de la livraison</h5>
+                    <p>Confirmez que votre travail est terminé et informez le client pour qu'il libère le paiement.</p>
+                    <button>
+                        <hugeicons-icon [icon]="Tick02Icon" [size]="24" color="#FFF" [strokeWidth]="1.5"></hugeicons-icon>
+                        <div>Revendiquer sa mission</div>
+                    </button>
+                </div><br>
+                <div class="actDiv">
+                    <h5>Disputer la livraison</h5>
+                    <p>Un problème ? Introduisez un litige et nous vous aiderons à le résoudre de manière équitable.</p>
+                    <button class="dispBtn">
+                        <hugeicons-icon [icon]="Alert01Icon" [size]="24" color="#000" [strokeWidth]="1.5"></hugeicons-icon>
+                        <div>Revendiquer sa mission</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footerCtnr">
+        <h5 class="ftrTitle">Partager le contrat</h5>
+        <p class="ftrSubText">Partagez des preuves claires des tâches que vous avez accomplies, étape par étape.</p>
+        <div class="shareelements">
+            <qrcode *ngIf="isBrowser" [qrdata]="'Your data string'" [width]="80" [colorLight]="'red'" [colorDark]="'#000000'"></qrcode>
+            <button class="clip">
+                <hugeicons-icon [icon]="Copy01Icon" [size]="25" color="#004A25" [strokeWidth]="1.5"></hugeicons-icon>
+                <div>https://invoice.payora.io/fjbvufebv</div>
+            </button>
+        </div>
+    </div>
+</div>

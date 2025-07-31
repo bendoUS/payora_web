@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ArrowRight01Icon, FileEmpty01Icon, File01Icon, Invoice01Icon, Agreement01Icon, RemoveCircleHalfDotIcon, Legal01Icon } from '@hugeicons/core-free-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contrat',
@@ -23,4 +24,15 @@ export class ContratComponent {
     { name: 'Alice Dupont', email: 'alice@mail.com', role: 'Admin', status: 'Actif' },
     { name: 'Alice Dupont', email: 'alice@mail.com', role: 'Admin', status: 'Actif' }
   ];
+
+  constructor(public router: Router) {}
+
+  get isMainPage(): boolean {
+    // True si tu es exactement sur /contrat
+    return this.router.url === '/dashboard/contrat';
+  }
+
+  goToPage(page: any) {
+    this.router.navigate(['/dashboard/contrat/'+page]);
+  }
 }

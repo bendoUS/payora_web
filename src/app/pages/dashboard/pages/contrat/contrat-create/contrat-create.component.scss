@@ -1,0 +1,320 @@
+.PageTitle {
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.PageSubtitle {
+    font-size: 13px;
+    color: #5b5b5b;
+}
+
+.stepper {
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.steps {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.step {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    transition: background 0.3s;
+    font-size: 14px;
+    border: 1px solid #000;
+}
+
+.step.active {
+    background: #59F25A;
+    color: #000;
+    border: none;
+}
+
+.line {
+    flex: 1;
+    height: 3px;
+    background: #ccc;
+    margin: 0 5px;
+    transition: background 0.3s;
+}
+
+.line.active {
+    background: #59F25A;
+}
+
+.stepContent {
+    margin-top: 30px;
+    border-radius: 8px;
+    text-align: left;
+
+    h3 {
+        font-size: 17px;
+        margin-bottom: 5px;
+
+        .titleWithSvg{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    }
+
+    p.subTitle {
+        font-size: 12px;
+        color: #5b5b5b;
+    }
+
+    .gridPrent {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        margin-bottom: 20px;
+        gap: 20px;
+
+        .serviceItem {
+            background-color: #FFF;
+            border-radius: 10px;
+            min-height: 80px;
+            display: flex;
+            cursor: pointer;
+
+            .leftelement {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 20%;
+            }
+
+            .centerElement {
+                width: 60%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+                padding: 15px 0;
+
+                h4.headerElement {
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+
+                p.paraElement {
+                    margin-bottom: 0;
+                    font-size: 12px;
+                    color: #5b5b5b;
+                }
+            }
+
+            .rightElement {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 20%;
+
+                .dotIcon {
+                    border-radius: 30px;
+                    height: 20px;
+                    width: 20px;
+                    background-color: #D9D9D9;
+                }
+            }
+        }
+    }
+
+    .inputCtnr {
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: right;
+
+        input {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            height: 50px;
+            padding: 10px 20px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+        button.validationBtn {
+            background-color: #59F25A;
+            border: none;
+            width: 250px;
+            height: 40px;
+            font-size: 13px;
+            border-radius: 10px;
+        }
+        button.previousBtn {
+            background-color: #FFF;
+            border: none;
+            width: 250px;
+            height: 40px;
+            font-size: 13px;
+            border-radius: 10px;
+        }
+        .inputGroup{
+            text-align: left;
+
+            label{
+                font-size: 13px;
+                font-weight: 600;
+            }
+        }
+        .buttonGrp{
+            display: flex;
+            justify-content: right;
+            gap: 10px;
+        }
+    }
+
+    .contratContainerEditor{
+        border: 1px solid #727272;
+        height: 500px;
+        padding: 20px 10px;
+        margin-bottom: 20px;
+        background-color: #FFF;
+        border-radius: 15px;
+        overflow: scroll;
+    }
+
+    .contentBodyCtnr{
+        display: flex;
+        margin-top: 20px;
+        gap: 50px;
+
+        .leftElementCtnr{
+            width: 300px;
+            height: 420px;
+            background-color: #FFF;
+            border-radius: 15px;
+            border: 1px solid #000;
+            padding: 10px;
+
+            .dateRightElement{
+                font-size: 8px;
+                text-align: right;
+                font-style: italic;
+            }
+            h4{
+                font-weight: bold;
+                font-size: 13px;
+                text-align: center;
+                margin-top: 10px;
+                text-decoration: underline;
+            }
+            .introDiv{
+                width: 100%;
+                font-size: 9px;
+
+                p{
+                    margin-bottom: 1px;
+                }
+            }
+            .bodyDiv{
+                margin-top: 10px;
+                font-size: 9px;
+
+                p{
+                    margin-bottom: 5px;
+                }
+            }
+            .footerDiv{
+                text-align: right;
+
+                img{
+                    width: 50px;
+                }
+            }
+        }
+        .rightElementCtnr{
+            width: calc(100% - 300px);
+            
+            h5{
+                font-size: 17px;
+                font-weight: 500;
+            }
+            p{
+                font-size: 14px;
+                width: 80%;
+                font-weight: 300;
+                margin-top: 15px;
+                line-height: 25px;
+            }
+            .alignBtn{
+                text-align: center;
+                width: 80%;
+            }
+            button {
+                margin-top: 20px;
+                width: 280px;
+                height: 45px;
+                font-size: 12px;
+                background-color: #000;
+                border: none;
+                border-radius: 30px;
+                color: #FFF;
+            }
+        }
+
+        .leftGlobalElement{
+
+            button.copyClipBtn{
+                width: 100%;
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                font-size: 13px;
+                justify-content: center;
+                border: none;
+                border-radius: 30px;
+                height: 40px;
+                gap: 5px;
+                background-color: #59F25A;
+            }
+            button.shareToRegisBtn{
+                width: 100%;
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+                font-size: 13px;
+                justify-content: left;
+                border: none;
+                border-radius: 30px;
+                height: 40px;
+                gap: 5px;
+                background-color: #000;
+                color: #FFF;
+
+                .svgCover{
+                    background-color: #FFF;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                p{
+                    margin-bottom: 0;
+                    text-align: center;
+                    width: calc(100% - 30px);
+                    margin-left: -15px;
+                }
+            }
+        }
+    }
+
+}

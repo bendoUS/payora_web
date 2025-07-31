@@ -1,105 +1,116 @@
 <div class="container">
-    <div class="dashHeader">
-        <h3>Contrat</h3>
-        <p>Gérez et suivez tous vos contrats actifs, inactifs et suspendus en un seul endroit.</p>
+    <div *ngIf="isMainPage">
+        <div class="dashHeader">
+            <h3>Contrat</h3>
+            <p>Gérez et suivez tous vos contrats actifs, inactifs et suspendus en un seul endroit.</p>
 
-        <div class="dashHeaderSub">
-            <h1>1.020.456</h1>
-            <button> <hugeicons-icon [icon]="FileEmpty01Icon" [size]="18" color="#222325"
-                    [strokeWidth]="1.5"></hugeicons-icon> Nouveau contrat</button>
-        </div>
+            <div class="dashHeaderSub">
+                <h1>1.020.456</h1>
+                <button (click)="goToPage('create')"> <hugeicons-icon [icon]="FileEmpty01Icon" [size]="18" color="#222325"
+                        [strokeWidth]="1.5"></hugeicons-icon> Nouveau contrat</button>
+            </div>
 
-        <div class="dashFooterElem">
-            <div class="row">
-                <div class="col-6">
-                    <div class="leftElement">
-                        <div class="leftUnder">
-                            <h3>340.000</h3>
-                            <p>Contrats total actifs</p>
-                        </div>
-                        <div class="rightUnder">
-                            <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
-                                [strokeWidth]="1.5"></hugeicons-icon>
+            <div class="dashFooterElem">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="leftElement">
+                            <div class="leftUnder">
+                                <h3>340.000</h3>
+                                <p>Contrats total actifs</p>
+                            </div>
+                            <div class="rightUnder">
+                                <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
+                                    [strokeWidth]="1.5"></hugeicons-icon>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="rightElement">
-                        <div class="rightUnder">
-                            <h3>340.000</h3>
-                            <p>Contrats total rejettés</p>
-                        </div>
-                        <div class="rightUnder">
-                            <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
-                                [strokeWidth]="1.5"></hugeicons-icon>
+                    <div class="col-6">
+                        <div class="rightElement">
+                            <div class="rightUnder">
+                                <h3>340.000</h3>
+                                <p>Contrats total rejettés</p>
+                            </div>
+                            <div class="rightUnder">
+                                <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
+                                    [strokeWidth]="1.5"></hugeicons-icon>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="dashSelectorElements">
-        <div class="firstChild dashElementsItem">
-            <hugeicons-icon [icon]="File01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-            Contrats actifs
+        <div class="dashSelectorElements">
+            <div class="firstChild dashElementsItem">
+                <hugeicons-icon [icon]="File01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
+                Contrats actifs
+            </div>
+            <div class="dashElementsItem">
+                <hugeicons-icon [icon]="Invoice01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
+                Contrats en cours
+            </div>
+            <div class="dashElementsItem">
+                <hugeicons-icon [icon]="Agreement01Icon" [size]="24" color="#000000"
+                    [strokeWidth]="1.5"></hugeicons-icon>
+                Contrats validé
+            </div>
+            <div class="dashElementsItem">
+                <hugeicons-icon [icon]="RemoveCircleHalfDotIcon" [size]="24" color="#000000"
+                    [strokeWidth]="1.5"></hugeicons-icon>
+                Contrats rejettés
+            </div>
+            <div class="dashElementsItem">
+                <hugeicons-icon [icon]="Legal01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
+                Contrats sous litiges
+            </div>
         </div>
-        <div class="dashElementsItem">
-            <hugeicons-icon [icon]="Invoice01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-            Contrats en cours
-        </div>
-        <div class="dashElementsItem">
-            <hugeicons-icon [icon]="Agreement01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-            Contrats validé
-        </div>
-        <div class="dashElementsItem">
-            <hugeicons-icon [icon]="RemoveCircleHalfDotIcon" [size]="24" color="#000000"
-                [strokeWidth]="1.5"></hugeicons-icon>
-            Contrats rejettés
-        </div>
-        <div class="dashElementsItem">
-            <hugeicons-icon [icon]="Legal01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-            Contrats sous litiges
-        </div>
-    </div>
 
-    <div class="dashboardFooter">
-        <div class="table-container">
-            <table class="custom-table">
-                <thead>
-                    <tr>
-                        <th>Titre du contrat</th>
-                        <th>Concerné</th>
-                        <th>Date de création</th>
-                        <th>Valeur du contrat</th>
-                        <th>État</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let user of users">
-                        <td>
-                            <div class="leftIconStepElem">
-                                <hugeicons-icon [icon]="FileEmpty01Icon" [size]="22" color="#222325" [strokeWidth]="1.5"></hugeicons-icon>
-                                <div>
-                                    <div style="font-weight: 600;font-weight: 16px;margin-bottom: 5px;">{{ user.name }}</div>
-                                    <div style="color: rgb(102, 102, 102);font-size: 13px;">Mise à jour le: 07-07-2025</div>
+        <div class="dashboardFooter">
+            <div class="table-container">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Titre du contrat</th>
+                            <th>Concerné</th>
+                            <th>Date de création</th>
+                            <th>Valeur du contrat</th>
+                            <th>État</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users" (click)="goToPage('detail')">
+                            <td>
+                                <div class="leftIconStepElem">
+                                    <hugeicons-icon [icon]="FileEmpty01Icon" [size]="22" color="#222325"
+                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                    <div>
+                                        <div style="font-weight: 600;font-weight: 16px;margin-bottom: 5px;">{{ user.name
+                                            }}</div>
+                                        <div style="color: rgb(102, 102, 102);font-size: 13px;">Mise à jour le:
+                                            07-07-2025</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.role }}</td>
-                        <td>
-                            5000$
-                        </td>
-                        <td>
-                            <span class="status"
-                                [ngClass]="{ 'actif': user.status === 'Actif', 'inactif': user.status === 'Inactif', 'suspendu': user.status === 'Suspendu' }">
-                                {{ user.status }}
-                            </span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            </td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.role }}</td>
+                            <td>
+                                5000$
+                            </td>
+                            <td>
+                                <span class="status"
+                                    [ngClass]="{ 'actif': user.status === 'Actif', 'inactif': user.status === 'Inactif', 'suspendu': user.status === 'Suspendu' }">
+                                    {{ user.status }}
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+
+    <div *ngIf="!isMainPage">
+        <router-outlet></router-outlet>
+    </div>
+
 </div>
