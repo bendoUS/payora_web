@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { ArrowRight01Icon, FileEmpty01Icon, File01Icon, Invoice01Icon, Agreement01Icon, RemoveCircleHalfDotIcon, Legal01Icon, BubbleChatNotificationIcon, FileSyncIcon, FileValidationIcon } from '@hugeicons/core-free-icons';
 
 @Component({
-  selector: 'app-litige',
-  templateUrl: './litige.component.html',
-  styleUrl: './litige.component.scss'
+    selector: 'app-litige',
+    templateUrl: './litige.component.html',
+    styleUrl: './litige.component.scss',
+    standalone: false
 })
 export class LitigeComponent {
 

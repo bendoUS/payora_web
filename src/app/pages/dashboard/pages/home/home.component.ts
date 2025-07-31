@@ -4,9 +4,10 @@ import { ArrowUpRight03Icon, ArrowRight01Icon, Agreement03Icon, ChartBreakoutSqu
 import { ChartConfiguration, ChartType, ChartData, ChartOptions } from 'chart.js';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss',
+    standalone: false
 })
 export class HomeComponent {
   ArrowUpRight03Icon = ArrowUpRight03Icon;

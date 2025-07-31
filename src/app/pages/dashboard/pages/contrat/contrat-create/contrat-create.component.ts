@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { BrushIcon, RecordIcon, WebDesign02Icon, ComputerPhoneSyncIcon, GlobalIcon, MailOpenIcon, PencilEdit02Icon, PaintBrush04Icon, Store01Icon, Robot02Icon, SatelliteIcon, KeyframesMultipleIcon, EthereumIcon } from '@hugeicons/core-free-icons';
 
 @Component({
-  selector: 'app-contrat-create',
-  templateUrl: './contrat-create.component.html',
-  styleUrl: './contrat-create.component.scss'
+    selector: 'app-contrat-create',
+    templateUrl: './contrat-create.component.html',
+    styleUrl: './contrat-create.component.scss',
+    standalone: false
 })
 export class ContratCreateComponent {
   RecordIcon = RecordIcon

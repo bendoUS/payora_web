@@ -5,9 +5,10 @@ import { SearchIcon, Payment01Icon, Invoice04Icon, JudgeIcon, Legal01Icon, Conne
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard-layout',
-  templateUrl: './dashboard-layout.component.html',
-  styleUrl: './dashboard-layout.component.scss'
+    selector: 'app-dashboard-layout',
+    templateUrl: './dashboard-layout.component.html',
+    styleUrl: './dashboard-layout.component.scss',
+    standalone: false
 })
 export class DashboardLayoutComponent {
   Home01Icon = Home01Icon;

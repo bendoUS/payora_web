@@ -4,9 +4,10 @@ import { ArrowUpRight03Icon, ArrowRight01Icon, Agreement03Icon, ChartBreakoutSqu
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-transaction',
-  templateUrl: './transaction.component.html',
-  styleUrl: './transaction.component.scss'
+    selector: 'app-transaction',
+    templateUrl: './transaction.component.html',
+    styleUrl: './transaction.component.scss',
+    standalone: false
 })
 export class TransactionComponent {
 

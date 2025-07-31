@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
-  selector: 'app-contrat-detail',
-  templateUrl: './contrat-detail.component.html',
-  styleUrl: './contrat-detail.component.scss'
+    selector: 'app-contrat-detail',
+    templateUrl: './contrat-detail.component.html',
+    styleUrl: './contrat-detail.component.scss',
+    standalone: false
 })
 export class ContratDetailComponent {
   Tick02Icon = Tick02Icon

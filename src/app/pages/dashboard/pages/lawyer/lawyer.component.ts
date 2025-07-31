@@ -3,9 +3,10 @@ import { Menu02Icon, Clock04Icon, ArrowUpRight01Icon, Attachment02Icon } from '@
 import { text } from 'stream/consumers';
 
 @Component({
-  selector: 'app-lawyer',
-  templateUrl: './lawyer.component.html',
-  styleUrl: './lawyer.component.scss'
+    selector: 'app-lawyer',
+    templateUrl: './lawyer.component.html',
+    styleUrl: './lawyer.component.scss',
+    standalone: false
 })
 export class LawyerComponent {
 

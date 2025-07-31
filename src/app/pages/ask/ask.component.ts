@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-ask',
-  standalone: true,
-  imports: [],
-  templateUrl: './ask.component.html',
-  styleUrl: './ask.component.scss'
+    selector: 'app-ask',
+    imports: [],
+    templateUrl: './ask.component.html',
+    styleUrl: './ask.component.scss'
 })
 export class AskComponent {
   

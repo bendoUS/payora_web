@@ -6,11 +6,11 @@ import { CommonModule } from '@angular/common';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
-  selector: 'app-sign',
-  standalone: true,
-  imports: [CommonModule, FormsModule, CarouselModule],
-  templateUrl: './sign.component.html',
-  styleUrl: './sign.component.scss'
+    selector: 'app-sign',
+    standalone: true,
+    imports: [CommonModule, FormsModule, CarouselModule],
+    templateUrl: './sign.component.html',
+    styleUrl: './sign.component.scss'
 })
 export class SignComponent {
 

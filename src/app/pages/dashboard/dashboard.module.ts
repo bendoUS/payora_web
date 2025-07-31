@@ -14,6 +14,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { RouterModule } from '@angular/router';
 import { HugeiconsIconComponent } from "@hugeicons/angular";
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { FormsModule } from '@angular/forms';
 
 import { NgChartsModule } from 'ng2-charts';

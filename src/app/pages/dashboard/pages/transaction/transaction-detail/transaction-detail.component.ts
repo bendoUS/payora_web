@@ -3,9 +3,10 @@ import { Cancel01Icon, AlertDiamondIcon } from '@hugeicons/core-free-icons';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-transaction-detail',
-  templateUrl: './transaction-detail.component.html',
-  styleUrl: './transaction-detail.component.scss'
+    selector: 'app-transaction-detail',
+    templateUrl: './transaction-detail.component.html',
+    styleUrl: './transaction-detail.component.scss',
+    standalone: false
 })
 export class TransactionDetailComponent {
 

@@ -3,9 +3,10 @@ import { ArrowRight01Icon, FileEmpty01Icon, File01Icon, Invoice01Icon, Agreement
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-contrat',
-  templateUrl: './contrat.component.html',
-  styleUrl: './contrat.component.scss'
+    selector: 'app-contrat',
+    templateUrl: './contrat.component.html',
+    styleUrl: './contrat.component.scss',
+    standalone: false
 })
 export class ContratComponent {
 
