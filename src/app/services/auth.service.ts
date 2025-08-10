@@ -1,4 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +9,9 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   private isLoggedInFlag = true;
 
-  login(email: string, password: string): boolean {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private auth: Auth) { }
+
+  /*login(email: string, password: string): boolean {
     // Ex: login bidon, remplace-le par un appel API réel
     if (email === 'admin@payora.com' && password === 'admin') {
       this.isLoggedInFlag = true;
@@ -14,15 +19,26 @@ export class AuthService {
       return true;
     }
     return true;
+  }*/
+
+  login(email: string, password: string) {
+    return signInWithEmailAndPassword(this.auth, email, password);
+  }
+
+  async loginWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    return await signInWithPopup(this.auth, provider);
   }
 
   logout() {
-    this.isLoggedInFlag = false;
-    localStorage.removeItem('token');
+    ///this.isLoggedInFlag = false;
+    localStorage.removeItem('userInfo');
   }
 
   isLoggedIn(): boolean {
-    //return !!localStorage.getItem('token');
-    return true
+    if (isPlatformBrowser(this.platformId)) {
+      return !!localStorage.getItem('userInfo');
+    }
+    return false;
   }
 }

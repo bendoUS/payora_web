@@ -19,7 +19,7 @@
                             </div>
                             <p class="forgotPwd"><a href="">Forgot password?</a></p>
                             <button type="submit">Je me connecte</button>
-                            <button type="submit" class="googlCnnx"><div class="btnInsideCtnr"><img src="../../../assets/logo/google.png" alt=""> Connexion avec google</div></button>
+                            <button (click)="loginGoogle()" type="submit" class="googlCnnx"><div class="btnInsideCtnr"><img src="../../../assets/logo/google.png" alt=""> Connexion avec google</div></button>
                             <p class="haveAccount">Je n'ai pas encore de compte. <a href="/sign">J'en crée un</a></p>
                         </form>
                         <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>

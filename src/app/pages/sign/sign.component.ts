@@ -32,9 +32,9 @@ export class SignComponent {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  onLogin() {
+  async onLogin() {
     const success = this.authService.login(this.email, this.password);
-    if (success) {
+    if (await success) {
       this.router.navigate(['/dashboard']);
     } else {
       this.errorMessage = "*Email ou mot de passe invalide.";

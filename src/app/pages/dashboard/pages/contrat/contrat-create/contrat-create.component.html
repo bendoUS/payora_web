@@ -19,7 +19,8 @@
                 <p class="subTitle">Sélectionnez le service auquel le contrat est lié parmi la liste suivante.</p>
 
                 <div class="gridPrent">
-                    <div *ngFor="let item of servicesItems" class="serviceItem">
+                    <div *ngFor="let item of servicesItems; let i = index" class="serviceItem"
+                        (click)="selectService(i)">
                         <div class="leftelement">
                             <hugeicons-icon [icon]="item.icon" [size]="30" color="#222325"
                                 [strokeWidth]="1.5"></hugeicons-icon>
@@ -41,7 +42,8 @@
                     </div>
                 </div>
                 <div class="inputCtnr">
-                    <input type="text" placeholder="Gestion de groupe discord...." disabled>
+                    <input [(ngModel)]="inputElem" type="text" placeholder="Gestion de groupe discord...."
+                        [disabled]="selectedService.title !== 'Autres'">
                     <button class="validationBtn" (click)="nextStep()">Suivant</button>
                 </div>
             </div>
@@ -50,39 +52,119 @@
                 <p class="subTitle">Sélectionnez le service auquel le contrat est lié parmi la liste suivante.</p>
                 <div class="inputCtnr">
                     <div class="inputGroup">
-                        <label for="cout">Combien coute votre services?</label>
-                        <input name="cout" type="text" placeholder="Gestion de groupe discord....">
+                        <label for="nom">Quel est le nom exact du service fourni ?</label>
+                        <input name="nom" [(ngModel)]="informationsBase.nom" type="text"
+                            [placeholder]="selectedService.title">
                     </div>
                     <div class="inputGroup">
-                        <label for="cout">Combien coute votre services?</label>
-                        <input name="cout" type="text" placeholder="Gestion de groupe discord....">
+                        <label for="description">Quelle est la description précise du service ?</label>
+                        <input name="description" type="text" [(ngModel)]="informationsBase.description"
+                            [placeholder]="selectedService.subtitle">
                     </div>
                     <div class="inputGroup">
-                        <label for="cout">Combien coute votre services?</label>
-                        <input name="cout" type="text" placeholder="Gestion de groupe discord....">
+                        <label for="duree">Quelle est la durée du contrat (dates de début et de fin) ?</label>
+                        <input name="duree" type="text" [(ngModel)]="informationsBase.duree"
+                            placeholder="6 mois à partir de la validation du contrat.">
                     </div>
                     <div class="inputGroup">
-                        <label for="cout">Combien coute votre services?</label>
-                        <input name="cout" type="text" placeholder="Gestion de groupe discord....">
+                        <label for="tarif">Quel est le prix ou le tarif du service ?</label>
+                        <input name="tarif" type="text" [(ngModel)]="informationsBase.tarif"
+                            placeholder="Le tarif auquel votre service est facturé.">
                     </div>
                     <div class="inputGroup">
-                        <label for="cout">Combien coute votre services?</label>
-                        <input name="cout" type="text" placeholder="Gestion de groupe discord....">
+                        <label for="penalite">Y a-t-il des pénalités en cas de retard de paiement ?</label>
+                        <input name="penalite" type="text" [(ngModel)]="informationsBase.penalite"
+placeholder="Énumérez les pénalités possibles en cas de paiement.">
+                    </div>
+                    <div class="inputGroup">
+                        <label for="engagements">Quels sont les engagements de qualité (niveau de service, délai, etc.)
+?</label>
+                        <input name="engagements" type="text" [(ngModel)]="informationsBase.engagements"
+placeholder="Expliquez comment sont gérées les futures modifications possibles.">
+                    </div>
+                    <div class="inputGroup">
+                        <label for="infos">Comment sont gérées les informations confidentielles échangées ?</label>
+                        <input name="infos" type="text" [(ngModel)]="informationsBase.infos"
+placeholder="Exemple : Accès limité, destruction après 30 jours">
+                    </div>
+                    <div class="inputGroup">
+                        <label for="droits">Qui détient les droits sur le travail produit ou les livrables ?</label>
+                        <input name="droits" type="text" [(ngModel)]="informationsBase.droits"
+placeholder="Exemple : Le client conserve tous les droits après livraison.">
                     </div>
                     <div class="buttonGrp">
                         <button (click)="prevStep()" class="previousBtn">Précédent</button>
-                        <button (click)="nextStep()" class="validationBtn">Suivant</button>
+                        <button (click)="nextStep()" class="validationBtn"
+                            [disabled]="!this.isInformationsBaseValid()">Suivant</button>
                     </div>
                 </div>
-
-
-
             </div>
             <div *ngIf="currentStep === 3">
                 <h3>Modifier les termes du contrat</h3>
                 <p class="subTitle">Sélectionnez le service auquel le contrat est lié parmi la liste suivante.</p>
                 <div class="contratContainerEditor">
+<h5 class="contratTitle">Contrat de Prestation de UI/UX Design</h5>
+                    <p class="contratSubTitle">Ce contrat est conclu entre le Prestataire et le Client aux conditions
+                        suivantes :</p>
+                    <div class="dateCtnr">Établie le 10 aout 2025 par Payora</div>
 
+                    <div class="userInformations">
+                        <h6>Entre les soussignés :</h6>
+                        <div class="prestataire">
+                            <h5>Le prestataire :</h5>
+                            <p>Jeanela Dupont</p>
+                            <p>Adresse : 12 Rue des Lilas, 75010 Paris, France</p>
+                            <p>Téléphone : +33 6 12 34 56 78</p>
+                            <p>Email : contact&#64;payora.io</p>
+                        </div>
+                        <div class="andDiv">ET</div>
+                        <div class="client">
+                            <h5>Client :</h5>
+                            <p>Jean Dupont</p>
+                            <p>Adresse : 45 Avenue des Sciences, 69007 Lyon, France</p>
+                            <p>Téléphone : +33 4 78 90 12 34</p>
+                            <p>Email : jean.dupont&#64;example.com</p>
+                        </div>
+                    </div>
+
+                    <div class="preambuleCtnr">
+                        <h5>PREAMBULE</h5>
+                        <p>Dans le souci de respecter l'obligation déontologique qui est la sienne d'assurer la permanence des soins et conformément aux dispositions de l'article R.4127-65 du code de la santé publique (code de déontologie médicale), (non renseigné) a contacté (non renseigné) pour prendre en charge, lors de la cessation temporaire de son activité professionnelle habituelle, les patients qui feraient appel à elle/lui.</p>
+                        <p>Pour permettre le bon déroulement de ce remplacement, (non renseigné) met à la disposition de (non renseigné) son cabinet de consultation, situé au (non renseigné), et son secrétariat.</p>
+                        <p>Le présent contrat a pour objet de définir les conditions dans lesquelles (non renseigné) s'engage à assurer le remplacement de (non renseigné) et à prendre en charge ses patients.</p>
+                    </div>
+
+                    <div class="ArticleCtnr">
+                        <div class="articleEL" *ngFor="let article of articles">
+                            <h5>{{ article.title }}</h5>
+                            <p>{{ article.content }}</p>
+                        </div>
+                    </div>
+
+                    <div class="footerElement">
+                        ¹ Il est recommandé que les modalités habituelles de fonctionnement du cabinet soient précisées
+                        à la/au remplaçant(e), dans le souci de la permanence des soins.
+
+                        ² Cette activité personnelle ne devra en aucun cas être préjudiciable à la permanence des soins
+                        au sein du cabinet du médecin remplacé(e), activité justificative de l'établissement dudit
+                        contrat et ne pourra jamais être une activité de soins donnant lieu à délivrance de feuilles de
+                        maladie;
+
+                        ³ il ne peut s'agir que de médecine de prévention, d'examens pour des compagnies d'assurances...
+                        qui entrent dans l'activité habituelle de la/du remplaçant(e). Clause facultative, à débattre
+                        entre les signataires; elle devra faire l'objet d'une annexe au présent contrat.
+
+                        ⁴ Il serait souhaitable que la copie de cette assurance soit jointe au présent contrat.
+
+                        ⁵ Le taux de rétrocession d'honoraires doit être en rapport avec les charges du cabinet.
+
+                        ⁶ La clause d'arbitrage (clause compromissoire) est facultative et les parties peuvent décider
+                        de ne pas y recourir ou encore y recourir dans des conditions différentes de celles proposées
+                        ci-dessus.
+
+                        ⁷ Les parties peuvent renoncer à cette modalité de l'arbitrage et, dans ce cas, il suffit de
+                        supprimer la mention de l'amiable composition.
+                    </div>
                 </div>
                 <div class="inputCtnr">
                     <div class="buttonGrp">
@@ -149,7 +231,11 @@
                         </button>
                         <button class="shareToRegisBtn">
                             <div class="svgCover">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="20px" fill="#000"><path d="M40-160v-160q0-34 23.5-57t56.5-23h131q20 0 38 10t29 27q29 39 71.5 61t90.5 22q49 0 91.5-22t70.5-61q13-17 30.5-27t36.5-10h131q34 0 57 23t23 57v160H640v-91q-35 25-75.5 38T480-200q-43 0-84-13.5T320-252v92H40Zm440-160q-38 0-72-17.5T351-386q-17-25-42.5-39.5T253-440q22-37 93-58.5T480-520q63 0 134 21.5t93 58.5q-29 0-55 14.5T609-386q-22 32-56 49t-73 17ZM160-440q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T280-560q0 50-34.5 85T160-440Zm640 0q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T920-560q0 50-34.5 85T800-440ZM480-560q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-680q0 50-34.5 85T480-560Z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+width="20px" fill="#000">
+<path
+d="M40-160v-160q0-34 23.5-57t56.5-23h131q20 0 38 10t29 27q29 39 71.5 61t90.5 22q49 0 91.5-22t70.5-61q13-17 30.5-27t36.5-10h131q34 0 57 23t23 57v160H640v-91q-35 25-75.5 38T480-200q-43 0-84-13.5T320-252v92H40Zm440-160q-38 0-72-17.5T351-386q-17-25-42.5-39.5T253-440q22-37 93-58.5T480-520q63 0 134 21.5t93 58.5q-29 0-55 14.5T609-386q-22 32-56 49t-73 17ZM160-440q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T280-560q0 50-34.5 85T160-440Zm640 0q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T920-560q0 50-34.5 85T800-440ZM480-560q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-680q0 50-34.5 85T480-560Z" />
+</svg>
                             </div>
 
                             <p>Send it to registered clients</p>
@@ -158,15 +244,7 @@
 
                     <div class="rightElementCtnr">
                         <h5>Récapitulatif du contrat</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla finibus ultricies. In
-                            eget nunc imperdiet metus aliquet auctor id sit amet enim. Maecenas vel blandit purus.
-                            Aenean imperdiet libero at eros ultricies, non vehicula tellus volutpat. Suspendisse nisi
-                            diam, dignissim nec facilisis gravida, gravida sed erat. Pellentesque habitant morbi
-                            tristique senectus et netus et malesuada fames ac turpis egestas. Ut rutrum augue eget
-                            ligula volutpat, eget euismod ligula dignissim. Aenean hendrerit molestie feugiat. Interdum
-                            et malesuada fames ac ante ipsum primis in faucibus. Quisque sed porta lectus. Aliquam ut
-                            velit rhoncus, cursus sapien nec, bibendum ipsum. Nulla maximus neque in ligula finibus
-                            pulvinar. Donec pellentesque lacus aliquam justo molestie, at tempus eros aliquam.</p>
+                        <p>{{ recapitulatif }}</p>
                         <div class="alignBtn">
                             <button>Voir tous les contrats</button>
                         </div>

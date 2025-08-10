@@ -1,2 +1,4 @@
 @use 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel' as owl-carousel;
 @use 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default' as owl-theme;
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
