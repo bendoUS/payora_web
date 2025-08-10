@@ -41,7 +41,7 @@ import { QRCodeComponent } from 'angularx-qrcode';
     HugeiconsIconComponent,
     NgChartsModule,
     QRCodeComponent,
-    FormsModule
+    FormsModule,
 ]
 })
 export class DashboardModule { }

@@ -74,23 +74,23 @@
                     <div class="inputGroup">
                         <label for="penalite">Y a-t-il des pénalités en cas de retard de paiement ?</label>
                         <input name="penalite" type="text" [(ngModel)]="informationsBase.penalite"
-placeholder="Énumérez les pénalités possibles en cas de paiement.">
+                            placeholder="Énumérez les pénalités possibles en cas de paiement.">
                     </div>
                     <div class="inputGroup">
                         <label for="engagements">Quels sont les engagements de qualité (niveau de service, délai, etc.)
-?</label>
+                            ?</label>
                         <input name="engagements" type="text" [(ngModel)]="informationsBase.engagements"
-placeholder="Expliquez comment sont gérées les futures modifications possibles.">
+                            placeholder="Expliquez comment sont gérées les futures modifications possibles.">
                     </div>
                     <div class="inputGroup">
                         <label for="infos">Comment sont gérées les informations confidentielles échangées ?</label>
                         <input name="infos" type="text" [(ngModel)]="informationsBase.infos"
-placeholder="Exemple : Accès limité, destruction après 30 jours">
+                            placeholder="Exemple : Accès limité, destruction après 30 jours">
                     </div>
                     <div class="inputGroup">
                         <label for="droits">Qui détient les droits sur le travail produit ou les livrables ?</label>
                         <input name="droits" type="text" [(ngModel)]="informationsBase.droits"
-placeholder="Exemple : Le client conserve tous les droits après livraison.">
+                            placeholder="Exemple : Le client conserve tous les droits après livraison.">
                     </div>
                     <div class="buttonGrp">
                         <button (click)="prevStep()" class="previousBtn">Précédent</button>
@@ -103,7 +103,7 @@ placeholder="Exemple : Le client conserve tous les droits après livraison.">
                 <h3>Modifier les termes du contrat</h3>
                 <p class="subTitle">Sélectionnez le service auquel le contrat est lié parmi la liste suivante.</p>
                 <div class="contratContainerEditor">
-<h5 class="contratTitle">Contrat de Prestation de UI/UX Design</h5>
+                    <h5 class="contratTitle">Contrat de Prestation de UI/UX Design</h5>
                     <p class="contratSubTitle">Ce contrat est conclu entre le Prestataire et le Client aux conditions
                         suivantes :</p>
                     <div class="dateCtnr">Établie le 10 aout 2025 par Payora</div>
@@ -129,9 +129,17 @@ placeholder="Exemple : Le client conserve tous les droits après livraison.">
 
                     <div class="preambuleCtnr">
                         <h5>PREAMBULE</h5>
-                        <p>Dans le souci de respecter l'obligation déontologique qui est la sienne d'assurer la permanence des soins et conformément aux dispositions de l'article R.4127-65 du code de la santé publique (code de déontologie médicale), (non renseigné) a contacté (non renseigné) pour prendre en charge, lors de la cessation temporaire de son activité professionnelle habituelle, les patients qui feraient appel à elle/lui.</p>
-                        <p>Pour permettre le bon déroulement de ce remplacement, (non renseigné) met à la disposition de (non renseigné) son cabinet de consultation, situé au (non renseigné), et son secrétariat.</p>
-                        <p>Le présent contrat a pour objet de définir les conditions dans lesquelles (non renseigné) s'engage à assurer le remplacement de (non renseigné) et à prendre en charge ses patients.</p>
+                        <p>Dans le souci de respecter l'obligation déontologique qui est la sienne d'assurer la
+                            permanence des soins et conformément aux dispositions de l'article R.4127-65 du code de la
+                            santé publique (code de déontologie médicale), (non renseigné) a contacté (non renseigné)
+                            pour prendre en charge, lors de la cessation temporaire de son activité professionnelle
+                            habituelle, les patients qui feraient appel à elle/lui.</p>
+                        <p>Pour permettre le bon déroulement de ce remplacement, (non renseigné) met à la disposition de
+                            (non renseigné) son cabinet de consultation, situé au (non renseigné), et son secrétariat.
+                        </p>
+                        <p>Le présent contrat a pour objet de définir les conditions dans lesquelles (non renseigné)
+                            s'engage à assurer le remplacement de (non renseigné) et à prendre en charge ses patients.
+                        </p>
                     </div>
 
                     <div class="ArticleCtnr">
@@ -185,43 +193,9 @@ placeholder="Exemple : Le client conserve tous les droits après livraison.">
                 <div class="contentBodyCtnr">
                     <div class="leftGlobalElement">
                         <div class="leftElementCtnr">
-                            <div class="dateRightElement">Mercredi, 30 avril 2025</div>
-                            <h4>Contrat de prestation de services</h4>
-                            <div class="introDiv">
-                                <p>Entre les soussignés:</p>
-                                <p>Monsieur Jean Dupont</p>
-                                <p>Adresse : 12 Rue des Lilas, 75010 Paris, France</p>
-                                <p>Téléphone : +33 6 12 34 56 78</p>
-                                <p>Email : jean.dupont&#64;example.com</p>
-                                <p>(ci-après dénommé « le Client »)</p>
-
-                                <p>Et</p>
-
-                                <p>Société AlphaTech Solutions SARL</p>
-                                <p>Adresse : 45 Avenue des Sciences, 69007 Lyon, France</p>
-                                <p>Téléphone : +33 4 78 90 12 34</p>
-                                <p>Email : contact&#64;alphatech-solutions.com</p>
-                                <p>(ci-après dénommée « le Prestataire »)</p>
-                                <p>Ensemble dénommés « les Parties ».</p>
-                            </div>
-                            <div class="bodyDiv">
-                                <strong>Article 1 : Objet du contrat</strong>
-                                <p>Le présent contrat a pour objet de définir les conditions dans lesquelles le
-                                    Prestataire
-                                    s'engage à fournir au Client des prestations de création d’un site web, incluant le
-                                    développement, la mise en ligne et une maintenance
-                                    de trois mois.</p>
-
-                                <strong>Article 2 : Durée du contrat</strong>
-                                <p>Le présent contrat entre en vigueur à compter du 1er août 2025 et restera valide
-                                    jusqu’au 31
-                                    octobre 2025, sauf résiliation anticipée conformément à l’article 8.</p>
-                            </div>
-                            <div class="footerDiv">
-                                <img src="../../../../../../assets/logo/logo.svg" alt="">
-                            </div>
+                            <iframe width="400px" height="480px" src="https://firebasestorage.googleapis.com/v0/b/discord-mapbox.appspot.com/o/pdf%2F1y2zvk-tx.myshopify.com-2025-02-28T16%3A40%3A28.370Z-Asistent_Virtual%20(1).pdf?alt=media&token=15881377-0529-4d86-bf01-83a4b61153a9" frameborder="0"></iframe>
                         </div>
-                        <button class="copyClipBtn">
+                        <button (click)="copyToClipboard('https://invoice.payora.io/fjbvufebv')" class="copyClipBtn">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="16px"
                                 fill="#000">
                                 <path
@@ -232,10 +206,10 @@ placeholder="Exemple : Le client conserve tous les droits après livraison.">
                         <button class="shareToRegisBtn">
                             <div class="svgCover">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-width="20px" fill="#000">
-<path
-d="M40-160v-160q0-34 23.5-57t56.5-23h131q20 0 38 10t29 27q29 39 71.5 61t90.5 22q49 0 91.5-22t70.5-61q13-17 30.5-27t36.5-10h131q34 0 57 23t23 57v160H640v-91q-35 25-75.5 38T480-200q-43 0-84-13.5T320-252v92H40Zm440-160q-38 0-72-17.5T351-386q-17-25-42.5-39.5T253-440q22-37 93-58.5T480-520q63 0 134 21.5t93 58.5q-29 0-55 14.5T609-386q-22 32-56 49t-73 17ZM160-440q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T280-560q0 50-34.5 85T160-440Zm640 0q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T920-560q0 50-34.5 85T800-440ZM480-560q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-680q0 50-34.5 85T480-560Z" />
-</svg>
+                                    width="20px" fill="#000">
+                                    <path
+                                        d="M40-160v-160q0-34 23.5-57t56.5-23h131q20 0 38 10t29 27q29 39 71.5 61t90.5 22q49 0 91.5-22t70.5-61q13-17 30.5-27t36.5-10h131q34 0 57 23t23 57v160H640v-91q-35 25-75.5 38T480-200q-43 0-84-13.5T320-252v92H40Zm440-160q-38 0-72-17.5T351-386q-17-25-42.5-39.5T253-440q22-37 93-58.5T480-520q63 0 134 21.5t93 58.5q-29 0-55 14.5T609-386q-22 32-56 49t-73 17ZM160-440q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T280-560q0 50-34.5 85T160-440Zm640 0q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T920-560q0 50-34.5 85T800-440ZM480-560q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-680q0 50-34.5 85T480-560Z" />
+                                </svg>
                             </div>
 
                             <p>Send it to registered clients</p>
@@ -246,7 +220,7 @@ d="M40-160v-160q0-34 23.5-57t56.5-23h131q20 0 38 10t29 27q29 39 71.5 61t90.5 22q
                         <h5>Récapitulatif du contrat</h5>
                         <p>{{ recapitulatif }}</p>
                         <div class="alignBtn">
-                            <button>Voir tous les contrats</button>
+                            <button (click)="goToPage('/')">Voir tous les contrats</button>
                         </div>
                     </div>
                 </div>
