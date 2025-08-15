@@ -6,13 +6,14 @@
     <div class="bodyCtnr">
         <div class="askCtnr">
             <div class="askHeader">
-                <h1>John, votre compte a été créé ! Qu'est-ce qui vous amène chez Payora ?</h1>
+                <h1>{{userInfo.displayName}}, votre compte a été créé ! Qu'est-ce qui vous amène chez Payora ?</h1>
                 <p>Nous adapterons votre expérience à vos besoins.</p>
             </div>
             <div class="askForm">
                 <div class="row">
                     <div class="col-6">
-                        <div class="clientSelct" (click)="selectType('client')" [ngClass]="isClientSelected ? 'active' : ''">
+                        <div class="clientSelct" (click)="selectType('client')"
+                            [ngClass]="isClientSelected ? 'active' : ''">
                             <div class="leftSetClient">
                                 <img src="../../../assets/svg/client_ask.svg" alt="">
                                 <h5>Je suis un client</h5>
@@ -26,7 +27,8 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="prestaSelct" (click)="selectType('presta')" [ngClass]="isPrestaSelected ? 'active' : ''">
+                        <div class="prestaSelct" (click)="selectType('presta')"
+                            [ngClass]="isPrestaSelected ? 'active' : ''">
                             <div class="leftSetPresta">
                                 <img src="../../../assets/svg/presta_ask.svg" alt="">
                                 <h5>Je suis un prestataire</h5>
@@ -34,7 +36,8 @@
                             </div>
                             <div class="rightSetPresta">
                                 <div class="checkCase">
-                                    <hugeicons-icon [icon]="Tick02Icon" [size]="24" [strokeWidth]="2.5"></hugeicons-icon>
+                                    <hugeicons-icon [icon]="Tick02Icon" [size]="24"
+                                        [strokeWidth]="2.5"></hugeicons-icon>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +45,25 @@
                 </div>
             </div>
             <div class="askFooter">
-                <button (click)="updateUserType()" class="">Valider</button>
+                <button (click)="updateUserType()" class="" [disabled]="isLoading">
+                    <div style="display: flex;align-items: center;justify-content: center;gap: 5px;">
+                        Valider
+                        <div class="loader" *ngIf="isLoading">
+                            <div class="bar1"></div>
+                            <div class="bar2"></div>
+                            <div class="bar3"></div>
+                            <div class="bar4"></div>
+                            <div class="bar5"></div>
+                            <div class="bar6"></div>
+                            <div class="bar7"></div>
+                            <div class="bar8"></div>
+                            <div class="bar9"></div>
+                            <div class="bar10"></div>
+                            <div class="bar11"></div>
+                            <div class="bar12"></div>
+                        </div>
+                    </div>
+                </button>
             </div>
         </div>
     </div>

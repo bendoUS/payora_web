@@ -121,6 +121,7 @@
         align-items: center;
         justify-content: center;
         gap: 5px;
+        cursor: pointer;
     }
     .firstChild.dashElementsItem {
         background-color: #83FF81;
@@ -197,6 +198,10 @@
         .status.inactif {
             color: #a17d00;
             background-color: #fff9e0;
+        }
+        .status.pending {
+            color: #202020;
+            background-color: #dddddd;
         }
 
         .status.suspendu {

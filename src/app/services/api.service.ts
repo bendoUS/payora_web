@@ -13,8 +13,12 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   // GET
-  getData(endpoint: string, params: any): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${endpoint}`, { params });
+  getData(endpoint: string, params: any, token: string): Observable<any> {
+    const headers = {
+      'Authorization': `Bearer ${token}`
+    };
+
+    return this.http.get(`${this.baseUrl}/${endpoint}`, { params, headers });
   }
 
   // POST

@@ -9,22 +9,55 @@
                         <p>Your digital lawyer in your pocket secure contracts, protected payments, zero stress.</p>
                     </div>
                     <div class="formCtnr">
-                        <form (ngSubmit)="onLogin()">
-                            <div>
-                                <input type="email" [(ngModel)]="email" name="email" placeholder="Name" required />
+                        <form #formRef="ngForm" (ngSubmit)="createAccount()">
+                            <div class="inputField">
+                                <input type="text" [(ngModel)]="name" name="name" placeholder="Nom" required
+                                    #nameRef="ngModel" />
+                                <div *ngIf="nameRef.invalid && nameRef.touched" style="color:red">
+                                    Nom requis
+                                </div>
                             </div>
-                            <div>
-                                <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+                            <div class="inputField">
+                                <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required email
+                                    #emailRef="ngModel" />
+                                <div *ngIf="emailRef.invalid && emailRef.touched" style="color:red">
+                                    Email invalide
+                                </div>
                             </div>
-                            <div>
+                            <div class="inputField">
                                 <input type="password" [(ngModel)]="password" name="password" placeholder="Mot de passe"
-                                    required />
+                                    required minlength="8" #passwordRef="ngModel" />
+                                <div *ngIf="passwordRef.invalid && passwordRef.touched" style="color:red">
+                                    Mot de passe trop court (8 caractères minimum)
+                                </div>
                             </div>
-                            <div>
-                                <input type="password" [(ngModel)]="password" name="password" placeholder="Confirmer le mot de passe"
-                                    required />
+                            <div class="inputField">
+                                <input type="password" [(ngModel)]="password_confirm" name="password_confirm"
+                                    placeholder="Confirmer le mot de passe" required #confirmRef="ngModel" />
+                                <div *ngIf="password !== password_confirm && confirmRef.touched" style="color:red">
+                                    Les mots de passe ne correspondent pas
+                                </div>
                             </div>
-                            <button type="submit">Créer mon compte</button>
+                            <button type="submit"
+                                [disabled]="formRef.invalid || password !== password_confirm || isLoading">
+                                <div style="display: flex;justify-content: center;align-items: center;gap: 5px;">
+                                    Créer mon compte
+                                    <div class="loader" *ngIf="isLoading">
+                                        <div class="bar1"></div>
+                                        <div class="bar2"></div>
+                                        <div class="bar3"></div>
+                                        <div class="bar4"></div>
+                                        <div class="bar5"></div>
+                                        <div class="bar6"></div>
+                                        <div class="bar7"></div>
+                                        <div class="bar8"></div>
+                                        <div class="bar9"></div>
+                                        <div class="bar10"></div>
+                                        <div class="bar11"></div>
+                                        <div class="bar12"></div>
+                                    </div>
+                                </div>
+                            </button>
                             <p class="haveAccount">J'ai déjà un compte. <a href="/login">Je me connecte</a></p>
                         </form>
                         <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>

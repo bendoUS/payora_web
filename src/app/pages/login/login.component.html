@@ -18,10 +18,32 @@
                                     required />
                             </div>
                             <p class="forgotPwd"><a href="">Forgot password?</a></p>
-                            <button type="submit">Je me connecte</button>
-                            <button (click)="loginGoogle()" type="submit" class="googlCnnx"><div class="btnInsideCtnr"><img src="../../../assets/logo/google.png" alt=""> Connexion avec google</div></button>
-                            <p class="haveAccount">Je n'ai pas encore de compte. <a href="/sign">J'en crée un</a></p>
+                            <button type="submit" [disabled]="isLoading">
+                                <div style="display: flex;align-items: center;justify-content: center;gap: 5px;">
+                                    Je me connecte
+                                    <div class="loader" *ngIf="isLoading">
+                                        <div class="bar1"></div>
+                                        <div class="bar2"></div>
+                                        <div class="bar3"></div>
+                                        <div class="bar4"></div>
+                                        <div class="bar5"></div>
+                                        <div class="bar6"></div>
+                                        <div class="bar7"></div>
+                                        <div class="bar8"></div>
+                                        <div class="bar9"></div>
+                                        <div class="bar10"></div>
+                                        <div class="bar11"></div>
+                                        <div class="bar12"></div>
+                                    </div>
+                                </div>
+                            </button>
+
                         </form>
+                        <button (click)="loginGoogle()" type="submit" class="googlCnnx">
+                            <div class="btnInsideCtnr"><img src="../../../assets/logo/google.png" alt=""> Connexion
+                                avec google</div>
+                        </button>
+                        <p class="haveAccount">Je n'ai pas encore de compte. <a href="/sign">J'en crée un</a></p>
                         <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
                     </div>
                 </div>

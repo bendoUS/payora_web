@@ -21,9 +21,28 @@ export class AuthService {
     return true;
   }*/
 
-  login(email: string, password: string) {
-    return signInWithEmailAndPassword(this.auth, email, password);
+  async login(email: string, password: string) {
+    try{ 
+      const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
+      return userCredential
+    }
+    catch(e){
+      return false
+    }
+    
   }
+
+  async createUser(email: string, password: string) {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+      console.log("✅ Compte créé :", userCredential.user.uid);
+      console.log("📧 Email :", userCredential.user.email);
+      return userCredential.user;
+    } catch (error) {
+      return 'error'
+    }
+  }
+
 
   async loginWithGoogle() {
     const provider = new GoogleAuthProvider();
@@ -33,6 +52,7 @@ export class AuthService {
   logout() {
     ///this.isLoggedInFlag = false;
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('userToken');
   }
 
   isLoggedIn(): boolean {

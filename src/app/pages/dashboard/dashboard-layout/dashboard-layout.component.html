@@ -52,7 +52,7 @@
                             <span>Langues</span>
                         </a></li>
                     <li><a class="menuItem" routerLink="/dashboard" routerLinkActive="active">
-                            <img src="../../../../assets/avatar/pp.jpg" alt="">
+                            <img [src]="userInfo.photoURL || '../../../../assets/avatar/pp.jpg'" alt="">
                             <span>Modifier le profil</span>
                         </a></li>
                     <li><a class="menuItem" routerLink="/dashboard" routerLinkActive="active">
@@ -60,7 +60,7 @@
                                 [strokeWidth]="1.5"></hugeicons-icon>
                             <span>Paramètres</span>
                         </a></li>
-                    <li><a class="menuItem" routerLink="/login" routerLinkActive="active">
+                    <li><a class="menuItem" (click)="loggout()" routerLinkActive="active">
                             <hugeicons-icon [icon]="Logout01Icon" [size]="20" color="#FFF"
                                 [strokeWidth]="1.5"></hugeicons-icon>
                             <span>Deconnexion</span>

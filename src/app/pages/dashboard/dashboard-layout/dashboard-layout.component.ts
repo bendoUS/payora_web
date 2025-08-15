@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Home01Icon, FirstBracketCircleIcon, File02Icon, Settings01Icon, Logout01Icon, EarthIcon } from '@hugeicons/core-free-icons';
 import { SearchIcon, Payment01Icon, Invoice04Icon, JudgeIcon, Legal01Icon, ConnectIcon } from '@hugeicons/core-free-icons';
-
+import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,9 +24,15 @@ export class DashboardLayoutComponent {
   Logout01Icon = Logout01Icon;
   EarthIcon = EarthIcon;
 
-  constructor(private router: Router) {}
+  userInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')!) : null;
+
+  constructor(private router: Router, private auth: AuthService) {}
 
   goToPage(page: any) {
     //this.router.navigate(['/'+page]);
+  }
+  loggout(){
+    this.auth.logout()
+    this.router.navigate(['/login']);
   }
 }

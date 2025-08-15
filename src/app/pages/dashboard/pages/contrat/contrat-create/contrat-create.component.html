@@ -13,7 +13,7 @@
             <div class="step" [class.active]="currentStep >= 4">4</div>
         </div>
 
-        <div class="stepContent">
+        <div class="stepContent" *ngIf="!isLoading">
             <div *ngIf="currentStep === 1">
                 <h3>Veuillez sélectionner le service</h3>
                 <p class="subTitle">Sélectionnez le service auquel le contrat est lié parmi la liste suivante.</p>
@@ -95,7 +95,7 @@
                     <div class="buttonGrp">
                         <button (click)="prevStep()" class="previousBtn">Précédent</button>
                         <button (click)="nextStep()" class="validationBtn"
-                            [disabled]="!this.isInformationsBaseValid()">Suivant</button>
+                            [disabled]="this.isInformationsBaseValid()">Suivant</button>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                 <h3>Modifier les termes du contrat</h3>
                 <p class="subTitle">Sélectionnez le service auquel le contrat est lié parmi la liste suivante.</p>
                 <div class="contratContainerEditor">
-                    <h5 class="contratTitle">Contrat de Prestation de UI/UX Design</h5>
+                    <h5 class="contratTitle">Contrat de Prestation de {{ selectedService.title }}</h5>
                     <p class="contratSubTitle">Ce contrat est conclu entre le Prestataire et le Client aux conditions
                         suivantes :</p>
                     <div class="dateCtnr">Établie le 10 aout 2025 par Payora</div>
@@ -193,7 +193,9 @@
                 <div class="contentBodyCtnr">
                     <div class="leftGlobalElement">
                         <div class="leftElementCtnr">
-                            <iframe width="400px" height="480px" src="https://firebasestorage.googleapis.com/v0/b/discord-mapbox.appspot.com/o/pdf%2F1y2zvk-tx.myshopify.com-2025-02-28T16%3A40%3A28.370Z-Asistent_Virtual%20(1).pdf?alt=media&token=15881377-0529-4d86-bf01-83a4b61153a9" frameborder="0"></iframe>
+                            <iframe width="400px" height="480px"
+                                src="https://firebasestorage.googleapis.com/v0/b/discord-mapbox.appspot.com/o/pdf%2F1y2zvk-tx.myshopify.com-2025-02-28T16%3A40%3A28.370Z-Asistent_Virtual%20(1).pdf?alt=media&token=15881377-0529-4d86-bf01-83a4b61153a9"
+                                frameborder="0"></iframe>
                         </div>
                         <button (click)="copyToClipboard('https://invoice.payora.io/fjbvufebv')" class="copyClipBtn">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="16px"
@@ -203,7 +205,7 @@
                             </svg>
                             https://invoice.payora.io/fjbvufebv
                         </button>
-                        <button class="shareToRegisBtn">
+                        <button class="shareToRegisBtn" (click)="openDialog()">
                             <div class="svgCover">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                     width="20px" fill="#000">
@@ -214,6 +216,7 @@
 
                             <p>Send it to registered clients</p>
                         </button>
+                        <p class="sendTo" *ngIf="selectedClient.id">Envoyé à {{ selectedClient.name }}</p>
                     </div>
 
                     <div class="rightElementCtnr">
@@ -224,6 +227,14 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="loadingPass" *ngIf="isLoading">
+            <div class="loadingSpinner">
+                <div class="loader">
+                </div>
+                <img style="width: 80px;margin-top: -140px;" src="../../../../../../assets/logo/logo.svg" alt="">
             </div>
         </div>
     </div>

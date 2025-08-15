@@ -1,0 +1,42 @@
+<div class="container">
+    <div *ngIf="showAddNewUser == false" class="inputSearchGroup">
+        <input type="text" placeholder="Rechercher un client" [(ngModel)]="searchTerm">
+        <button (click)="searchClients()">rechercher</button>
+    </div>
+    <div class="clientList" *ngIf="clients.length > 0 && !isLoading && showAddNewUser == false">
+        <div class="clientItem" *ngFor="let client of clients; let i = index">
+            <div class="clientInfo" [ngClass]="{'active': client.active}" (click)="selectClient(i)">
+                <img [src]="client.avatarUrl || 'assets/images/default-avatar.png'" alt="Client Avatar">
+                <div class="rightElement">
+                    <h3>{{ client.name }}</h3>
+                    <p>{{ client.email }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="noResults" *ngIf="clients.length === 0 && !isLoading && showAddNewUser == false">
+        <p>Aucun client trouvé</p>
+        <button (click)="addNewUser()">Ajouter un nouveau client</button>
+    </div>
+    <div class="loading" *ngIf="isLoading">
+        <p>Chargement...</p>
+    </div>
+    <div *ngIf="selectedClient.id && showAddNewUser == false" class="footerBtnCtnr">
+        <button class="" (click)="sendContrat()" [disabled]="false">Envoyé</button>
+    </div>
+
+    <div class="addnewUSer" *ngIf="showAddNewUser == true">
+        <div class="addNewUserHeader">
+            <h2>Ajouter un nouveau client</h2>
+            <p>Vous pouvez ajouter temporairement ce client qui sera directement notifé</p>
+        </div>
+        <form>
+            <input type="text" placeholder="Nom" [(ngModel)]="newClient.name" name="clientName" required>
+            <input type="text" placeholder="Prenom" [(ngModel)]="newClient.prenom" name="clientPrenom" required>
+            <input type="text" placeholder="Adresse" [(ngModel)]="newClient.adresse" name="clientAdresse" required>
+            <input type="email" placeholder="Email" [(ngModel)]="newClient.email" name="clientEmail" required>
+            <button type="submit" (click)="saveNewUser()">Ajouter</button>
+            <button (click)="showAddNewUser = false" class="back">Retour</button>
+        </form>
+    </div>
+</div>

@@ -5,9 +5,11 @@
             <p>Gérez et suivez tous vos contrats actifs, inactifs et suspendus en un seul endroit.</p>
 
             <div class="dashHeaderSub">
-                <h1>1.020.456</h1>
-                <button (click)="goToPage('create')"> <hugeicons-icon [icon]="FileEmpty01Icon" [size]="18" color="#222325"
-                        [strokeWidth]="1.5"></hugeicons-icon> Nouveau contrat</button>
+                <h1><span *ngIf="contratStats.totalContracts !== 0">{{ contratStats.totalContracts }}</span><span
+                        *ngIf="contratStats.totalContracts <= 0" style="font-size: 18px;">Aucun contrat pour le
+                        moment</span></h1>
+                <button (click)="goToPage('create')"> <hugeicons-icon [icon]="FileEmpty01Icon" [size]="18"
+                        color="#222325" [strokeWidth]="1.5"></hugeicons-icon> Nouveau contrat</button>
             </div>
 
             <div class="dashFooterElem">
@@ -15,7 +17,9 @@
                     <div class="col-6">
                         <div class="leftElement">
                             <div class="leftUnder">
-                                <h3>340.000</h3>
+                                <h3><span *ngIf="contratStats.activeContracts !== 0">{{ contratStats.activeContracts
+                                        }}</span><span *ngIf="contratStats.activeContracts <= 0"
+                                        style="font-size: 18px;">Aucun contrat</span></h3>
                                 <p>Contrats total actifs</p>
                             </div>
                             <div class="rightUnder">
@@ -27,7 +31,9 @@
                     <div class="col-6">
                         <div class="rightElement">
                             <div class="rightUnder">
-                                <h3>340.000</h3>
+                                <h3><span *ngIf="contratStats.rejectedContracts !== 0">{{ contratStats.rejectedContracts
+                                        }}</span><span *ngIf="contratStats.rejectedContracts <= 0"
+                                        style="font-size: 18px;">Aucun contrat</span></h3>
                                 <p>Contrats total rejettés</p>
                             </div>
                             <div class="rightUnder">
@@ -41,27 +47,11 @@
         </div>
 
         <div class="dashSelectorElements">
-            <div class="firstChild dashElementsItem">
-                <hugeicons-icon [icon]="File01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-                Contrats actifs
-            </div>
-            <div class="dashElementsItem">
-                <hugeicons-icon [icon]="Invoice01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-                Contrats en cours
-            </div>
-            <div class="dashElementsItem">
-                <hugeicons-icon [icon]="Agreement01Icon" [size]="24" color="#000000"
+            <div *ngFor="let categorie of categories; let i = index" class="dashElementsItem"
+                [ngClass]="{ 'firstChild': categorie.status === true }" (click)="selectCategory(i)">
+                <hugeicons-icon [icon]="categorie.icon" [size]="24" color="#000000"
                     [strokeWidth]="1.5"></hugeicons-icon>
-                Contrats validé
-            </div>
-            <div class="dashElementsItem">
-                <hugeicons-icon [icon]="RemoveCircleHalfDotIcon" [size]="24" color="#000000"
-                    [strokeWidth]="1.5"></hugeicons-icon>
-                Contrats rejettés
-            </div>
-            <div class="dashElementsItem">
-                <hugeicons-icon [icon]="Legal01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-                Contrats sous litiges
+                {{ categorie.name }}
             </div>
         </div>
 
@@ -71,6 +61,7 @@
                     <thead>
                         <tr>
                             <th>Titre du contrat</th>
+                            <th>Émetteur</th>
                             <th>Concerné</th>
                             <th>Date de création</th>
                             <th>Valeur du contrat</th>
@@ -78,33 +69,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let user of users" (click)="goToPage('detail')">
+                        <tr *ngFor="let contrat of filtrerdContracts" (click)="goToPage('detail')">
                             <td>
                                 <div class="leftIconStepElem">
                                     <hugeicons-icon [icon]="FileEmpty01Icon" [size]="22" color="#222325"
                                         [strokeWidth]="1.5"></hugeicons-icon>
                                     <div>
-                                        <div style="font-weight: 600;font-weight: 16px;margin-bottom: 5px;">{{ user.name
+                                        <div style="font-weight: 600;font-weight: 16px;margin-bottom: 5px;">{{ contrat.title
                                             }}</div>
-                                        <div style="color: rgb(102, 102, 102);font-size: 13px;">Mise à jour le:
-                                            07-07-2025</div>
+                                        <div style="color: rgb(102, 102, 102);font-size: 13px;">Mise à jour:
+                                            {{ contrat.createdAt | moment: 'fromNow' }}</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.role }}</td>
-                            <td>
-                                5000$
-                            </td>
+                            <td>{{ contrat.emmeter}}</td>
+                            <td>{{ contrat.concerned }}</td>
+                            <td>{{ contrat.createdAt | moment: 'MMMM Do YYYY' }}</td>
+                            <td>{{ contrat.value }}$</td>
                             <td>
                                 <span class="status"
-                                    [ngClass]="{ 'actif': user.status === 'Actif', 'inactif': user.status === 'Inactif', 'suspendu': user.status === 'Suspendu' }">
-                                    {{ user.status }}
+                                    [ngClass]="{ 'actif': contrat.status === 'Actif', 'inactif': contrat.status === 'Inactif', 'suspendu': contrat.status === 'Suspendu', 'pending': contrat.status === 'pending' }">
+                                    {{ contrat.status }}
                                 </span>
                             </td>
                         </tr>
                     </tbody>
+
                 </table>
+                <div *ngIf="filtrerdContracts.length <= 0" style="width: 100%;background-color: white;height: 300px; display: flex;align-items: center;justify-content: center;flex-direction: column;">
+                    <img src="../../../../../assets/icones/page.png" alt="" style="width: 60px;margin-bottom: 5px;">
+                    <p style="font-size: 13px;">Aucun contrat trouvé pour le moment</p>
+                </div>
             </div>
         </div>
     </div>

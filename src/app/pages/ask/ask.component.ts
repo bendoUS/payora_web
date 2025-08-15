@@ -20,6 +20,11 @@ export class AskComponent {
   isClientSelected: boolean = false;
   isPrestaSelected: boolean = true;
 
+  isLoading: boolean = false;
+
+  userInfo: any = JSON.parse(localStorage.getItem('userInfo') || '{}');
+  userToken: string = localStorage.getItem('userToken') || '';
+
   constructor(private router: Router, private api: ApiService) { }
 
   goToDashboard() {
@@ -37,27 +42,38 @@ export class AskComponent {
       this.isPrestaSelected = true;
     }
   }
+  ngOnInit() {
+    let userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
+    console.log('User Info:', userInfo);
+  }
 
   async updateUserType() {
+    this.isLoading = true
     let userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
     if (userInfo.uid) {
-      this.updateData(userInfo.uid, this.isClientSelected ? 'client' : 'presta');
-      this.router.navigate(['/dashboard']);
+      let updUserDt = await this.updateData(userInfo.uid, this.isClientSelected ? 'client' : 'presta');
+      console.log(updUserDt)
+      if(updUserDt.userType){
+        this.router.navigate(['/dashboard']);
+      }
+      this.isLoading = false
     }
     else {
       alert('Utilisateur non connecté ou UID manquant.');
+      this.isLoading = false
     }
   }
 
-  updateData(uid: string, userType: string): Promise<any> {
+  updateData(uid: string, type: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.api.getData('setUserType', { uid, userType }).subscribe({
+      this.api.getData('setUserType', { uid, type }, this.userToken).subscribe({
         next: (res) => {
           console.log(res)
           resolve(res);
         },
         error: (err) => {
           console.error('Erreur API', err);
+          this.router.navigate(['/login']);
           reject(err);
         }
       });

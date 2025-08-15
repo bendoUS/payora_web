@@ -1,9 +1,12 @@
 <div class="container">
     <div class="dashHeader">
-        <h3>Tableau de Bord</h3>
-        <p>Vue d’ensemble de vos revenus, contrats et fonds disponibles. Surveillez votre activité et prenez des décisions rapides.</p>
+        <h3>Tableau de Bord, <span style="text-decoration: underline;"
+                *ngIf="!homeData.boardType || homeData.boardType == 'presta'">prestataire</span> <span
+                style="text-decoration: underline;" *ngIf="homeData.boardType == 'client'">client</span></h3>
+        <p>Vue d’ensemble de vos revenus, contrats et fonds disponibles. Surveillez votre activité et prenez des
+            décisions rapides.</p>
     </div>
-    <div class="bordFirstelement">
+    <div class="bordFirstelement" *ngIf="!homeData.boardType || homeData.boardType == 'presta'">
         <div class="row">
             <div class="col-4">
                 <div class="boardFirstcard">
@@ -16,7 +19,7 @@
                     </div>
                     <div class="cardCtntElem">
                         <div>
-                            <h2>$120,873</h2>
+                            <h2>${{ dashboardData.revenuTotal }}</h2>
                         </div>
                         <div class="footerBottomCard">
                             <div class="footerLeftBtn">
@@ -24,7 +27,7 @@
                                     style="display: flex;background-color: #FFF;padding: 2.5px 10px;border-radius: 30px;opacity: .7;font-weight: 600;">
                                     <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="12" color="#222325"
                                         [strokeWidth]="1.5"></hugeicons-icon>
-                                    + 12.5%
+                                    + {{ dashboardData.revenuGrowth }}%
                                 </div>
                                 par rapport au mois dernier
                             </div>
@@ -43,7 +46,7 @@
                     </div>
                     <div class="cardCtntElem">
                         <div>
-                            <h2>89</h2>
+                            <h2>{{ dashboardData.contratTotal }}</h2>
                         </div>
                         <div class="footerBottomCard">
                             <div class="footerLeftBtn">
@@ -51,7 +54,7 @@
                                     style="display: flex;background-color: #59f25976;padding: 2.5px 10px;border-radius: 30px;opacity: .7;font-weight: 600;">
                                     <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="12" color="#222325"
                                         [strokeWidth]="1.5"></hugeicons-icon>
-                                    + 12.5%
+                                    + {{ dashboardData.contratGrowth }}%
                                 </div>
                                 par rapport au mois dernier
                             </div>
@@ -70,7 +73,7 @@
                     </div>
                     <div class="cardCtntElem">
                         <div>
-                            <h2>$120,873</h2>
+                            <h2>${{ dashboardData.fondDispo }}</h2>
                         </div>
                         <div class="footerBottomCard">
                             <div class="footerLeftBtn">
@@ -78,7 +81,7 @@
                                     style="display: flex;background-color: #59f25976;padding: 2.5px 10px;border-radius: 30px;opacity: .7;font-weight: 600;">
                                     <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="12" color="#222325"
                                         [strokeWidth]="1.5"></hugeicons-icon>
-                                    + 12.5%
+                                    + {{ dashboardData.fondDispoGrowth }}%
                                 </div>
                                 par rapport au mois dernier
                             </div>
@@ -88,12 +91,104 @@
             </div>
         </div>
     </div>
+    <div class="bordFirstelement clientBoard" *ngIf="homeData.boardType == 'client'">
+        <div class="row">
+            <div class="col-4">
+                <div class="boardFirstcard">
+                    <div class="cardHeader">
+                        <h5>Sommes totales dépensées</h5>
+                        <div class="headIconTop">
+                            <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="24" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                        </div>
+                    </div>
+                    <div class="cardCtntElem">
+                        <div>
+                            <h2>${{ dashboardData.revenuTotal }}</h2>
+                        </div>
+                        <div class="footerBottomCard">
+                            <div class="footerLeftBtn">
+                                <div
+                                    style="display: flex;background-color: #FFF;padding: 2.5px 10px;border-radius: 30px;opacity: .7;font-weight: 600;">
+                                    <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="12" color="#222325"
+                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                    + {{ dashboardData.revenuGrowth }}%
+                                </div>
+                                par rapport au mois dernier
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="boardSecondcard">
+                    <div class="cardHeader">
+                        <h5>Contrats total</h5>
+                        <div class="headIconTop">
+                            <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="24" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                        </div>
+                    </div>
+                    <div class="cardCtntElem">
+                        <div>
+                            <h2>{{ dashboardData.contratTotal }}</h2>
+                        </div>
+                        <div class="footerBottomCard">
+                            <div class="footerLeftBtn">
+                                <div
+                                    style="display: flex;background-color: #59f25976;padding: 2.5px 10px;border-radius: 30px;opacity: .7;font-weight: 600;">
+                                    <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="12" color="#222325"
+                                        [strokeWidth]="1.5"></hugeicons-icon>
+                                    + {{ dashboardData.contratGrowth }}%
+                                </div>
+                                par rapport au mois dernier
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="boardThirdcard">
+                    <div class="cardHeader">
+                        <h5>Fonds disponibles sur les contrats</h5>
+                        <div class="headIconTop">
+                            <hugeicons-icon [icon]="ArrowUpRight03Icon" [size]="24" color="#222325"
+                                [strokeWidth]="1.5"></hugeicons-icon>
+                        </div>
+                    </div>
+                    <div class="cardCtntElem">
+                        <div>
+                            <h2>${{ dashboardData.fondDispo }}</h2>
+                        </div>
+                        <div class="footerBottomCard">
+                            <div class="footerLeftBtn">
+                                Sommes totales placées sur les contrats en cours
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="boardSecondElement">
         <div class="row">
             <div class="col-8">
-                <div class="leftChartCtnr">
+                <div class="leftChartCtnr" *ngIf="!homeData.boardType || homeData.boardType == 'presta'">
                     <div class="cardHeader">
                         <h5>Évolution des contrats</h5>
+                        <p>Suivez la création de nouveaux contrats et la croissance de votre portefeuille.</p>
+                    </div>
+                    <div class="cardBody">
+                        <div *ngIf="isBrowser">
+                            <canvas height="260" baseChart [data]="barChartData" [type]="'bar'"
+                                [options]="barChartOptions"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftChartCtnr" *ngIf="homeData.boardType == 'client'">
+                    <div class="cardHeader">
+                        <h5>Évolution des sommes dépensé mensuellement</h5>
                         <p>Suivez la création de nouveaux contrats et la croissance de votre portefeuille.</p>
                     </div>
                     <div class="cardBody">
@@ -133,7 +228,7 @@
                     </div>
                     <div class="cardBody">
                         <div class="listCtnr">
-                            <div class="item">
+                            <div class="item" (click)="goToPage('create')">
                                 <div class="leftelement">
                                     <div class="iconBtnCtnr">
                                         <hugeicons-icon [icon]="Agreement03Icon" [size]="20" color="#222325"
@@ -144,14 +239,14 @@
                                 <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
                                     [strokeWidth]="1.5"></hugeicons-icon>
                             </div>
-                            <div class="item">
+                            <div class="item" (click)="goToPagescnd('lawyer')">
                                 <div class="leftelement">
                                     <div class="iconBtnCtnr">
                                         <hugeicons-icon [icon]="ChartBreakoutSquareIcon" [size]="20" color="#222325"
                                             [strokeWidth]="1.5"></hugeicons-icon>
                                     </div>
 
-                                    <p>Voir les estimations</p>
+                                    <p>Voir le juriste virtuel</p>
                                 </div>
                                 <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
                                     [strokeWidth]="1.5"></hugeicons-icon>
@@ -185,11 +280,35 @@
                                     </td>
                                 </tr>
                             </tbody>
+                            <div class="EmptyElement">
+                                <img src="../../../../../assets/icones/page.png" alt="">
+                                <p>Aucun contrat trouvé</p>
+                            </div>
                         </table>
                     </div>
 
                 </div>
             </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="loaderCtnr" *ngIf="isLoading">
+        <div class="loader">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+            <div class="bar5"></div>
+            <div class="bar6"></div>
+            <div class="bar7"></div>
+            <div class="bar8"></div>
+            <div class="bar9"></div>
+            <div class="bar10"></div>
+            <div class="bar11"></div>
+            <div class="bar12"></div>
         </div>
     </div>
 </div>

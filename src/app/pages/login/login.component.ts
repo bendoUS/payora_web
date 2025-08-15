@@ -18,6 +18,8 @@ export class LoginComponent {
   password = '';
   errorMessage = '';
 
+  isLoading: boolean = false;
+
   customOptions: OwlOptions = {
     items: 1,
     loop: true,
@@ -35,13 +37,42 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router, private api: ApiService, private zone: NgZone) { }
 
   async onLogin() {
-    //this.router.navigate(['/ask']);
-    const success = this.authService.login(this.email, this.password);
-    console.log("Login success:", success);
-    if (await success) {
-      this.router.navigate(['/ask']);
-    } else {
-      this.errorMessage = "*Email ou mot de passe invalide.";
+    if (this.email !== "" && this.password !== "") {
+      this.errorMessage = ""
+      this.isLoading = true
+      //this.router.navigate(['/ask']);
+      const success: any = await this.authService.login(this.email, this.password);
+
+      if (success) {
+        let loggedInUser = await this.logUser(success.user.uid ?? '', success.user.email ?? '');
+        console.log('Utilisateur connecté :', loggedInUser);
+
+        localStorage.setItem('userToken', loggedInUser.token);
+
+        let userData: any = await this.getUserInfo(success.user.uid, loggedInUser.token, success.user.displayName ?? '', success.user.email ?? '');
+        console.log('Données utilisateur récupérées :', userData);
+        //localStorage.setItem('userInfo', JSON.stringify(success.user));
+
+        let successE: any = success.user
+        if (!success.displayName) {
+          successE.displayName = userData.name;
+        }
+        localStorage.setItem('userInfo', JSON.stringify(successE));
+        if (userData.userType) {
+          this.router.navigate(['/dashboard']);
+        }
+        else {
+          this.router.navigate(['/ask']);
+        }
+
+        this.isLoading = false
+      } else {
+        this.errorMessage = "Veuillez vérifier votre adresse e-mail. Utilisateur introuvable.";
+        this.isLoading = false
+      }
+    }
+    else {
+      this.errorMessage = "Veuillez remplir tous les champs"
     }
   }
 
@@ -49,10 +80,18 @@ export class LoginComponent {
     this.authService.loginWithGoogle()
       .then(async result => {
         console.log('Connecté avec Google :', result.user);
+
+        let loggedInUser = await this.logUser(result.user.uid ?? '', result.user.email ?? '');
+        console.log('Utilisateur connecté :', loggedInUser);
+
+        localStorage.setItem('userToken', loggedInUser.token);
+
+        let userData: any = await this.getUserInfo(result.user.uid, loggedInUser.token, result.user.displayName ?? '', result.user.email ?? '');
+        console.log('Données utilisateur récupérées :', userData);
         localStorage.setItem('userInfo', JSON.stringify(result.user));
-        let userData: any = await this.getUserInfo(result.user.uid);
+
         if (userData) {
-          if (userData.userType !== null) {
+          if (userData.userType) {
             window.location.href = '/dashboard';
           }
           else {
@@ -65,9 +104,24 @@ export class LoginComponent {
       });
   }
 
-  getUserInfo(uid: string): Promise<any> {
+  logUser(uid: string, email: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.api.getData('getUserData', { uid }).subscribe({
+      this.api.postData('login', { uid, email }).subscribe({
+        next: (res) => {
+          resolve(res);
+        },
+        error: (err) => {
+          console.error('Erreur API', err);
+          reject(err);
+        }
+      });
+    });
+  }
+
+  getUserInfo(uid: string, token: string, name: string, email: string): Promise<any> {
+    console.log('Récupération des données utilisateur pour UID:', uid, 'avec token:', token);
+    return new Promise((resolve, reject) => {
+      this.api.getData('getUserData', { uid, name, email }, token).subscribe({
         next: (res) => {
           this.data = res;
           console.log('Données API', this.data);
@@ -80,4 +134,6 @@ export class LoginComponent {
       });
     });
   }
+
+
 }
