@@ -6,21 +6,22 @@
 
             <div class="dashHeaderSub">
                 <h1><span *ngIf="contratStats.totalContracts !== 0">{{ contratStats.totalContracts }}</span><span
-                        *ngIf="contratStats.totalContracts <= 0" style="font-size: 18px;">Aucun contrat pour le
+                        *ngIf="contratStats.totalContracts <= 0" style="font-size: 18px;font-weight: 500;">Aucun contrat pour le
                         moment</span></h1>
-                <button (click)="goToPage('create')"> <hugeicons-icon [icon]="FileEmpty01Icon" [size]="18"
+                <button (click)="goToPage('create', '')"> <hugeicons-icon [icon]="FileEmpty01Icon" [size]="18"
                         color="#222325" [strokeWidth]="1.5"></hugeicons-icon> Nouveau contrat</button>
             </div>
 
             <div class="dashFooterElem">
                 <div class="row">
                     <div class="col-6">
-                        <div class="leftElement">
+                        <div (click)="selectCategory(0)" class="leftElement">
                             <div class="leftUnder">
-                                <h3><span *ngIf="contratStats.activeContracts !== 0">{{ contratStats.activeContracts
-                                        }}</span><span *ngIf="contratStats.activeContracts <= 0"
-                                        style="font-size: 18px;">Aucun contrat</span></h3>
-                                <p>Contrats total actifs</p>
+                                <h3><span style="font-size: 16px;">Contrats total actifs</span></h3>
+                                <p>
+                                    <span *ngIf="contratStats.activeContracts !== 0">{{ contratStats.activeContracts
+                                        }}</span><span *ngIf="contratStats.activeContracts <= 0">Aucun contrat</span>
+                                </p>
                             </div>
                             <div class="rightUnder">
                                 <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
@@ -29,12 +30,13 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="rightElement">
+                        <div (click)="selectCategory(3)" class="rightElement">
                             <div class="rightUnder">
-                                <h3><span *ngIf="contratStats.rejectedContracts !== 0">{{ contratStats.rejectedContracts
-                                        }}</span><span *ngIf="contratStats.rejectedContracts <= 0"
-                                        style="font-size: 18px;">Aucun contrat</span></h3>
-                                <p>Contrats total rejettés</p>
+                                <h3><span style="font-size: 16px;">Contrats total rejettés</span></h3>
+                                <p>
+                                    <span *ngIf="contratStats.rejectedContracts !== 0">{{ contratStats.rejectedContracts
+                                        }}</span><span *ngIf="contratStats.rejectedContracts <= 0">Aucun contrat</span>
+                                </p>
                             </div>
                             <div class="rightUnder">
                                 <hugeicons-icon [icon]="ArrowRight01Icon" [size]="24" color="#222325"
@@ -69,26 +71,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let contrat of filtrerdContracts" (click)="goToPage('detail')">
+                        <tr *ngFor="let contrat of filtrerdContracts" (click)="goToPage('detail', contrat)">
                             <td>
                                 <div class="leftIconStepElem">
                                     <hugeicons-icon [icon]="FileEmpty01Icon" [size]="22" color="#222325"
                                         [strokeWidth]="1.5"></hugeicons-icon>
                                     <div>
-                                        <div style="font-weight: 600;font-weight: 16px;margin-bottom: 5px;">{{ contrat.title
+                                        <div style="font-weight: 600;font-weight: 16px;margin-bottom: 5px;">{{
+                                            contrat.contractReplies.nom
                                             }}</div>
                                         <div style="color: rgb(102, 102, 102);font-size: 13px;">Mise à jour:
-                                            {{ contrat.createdAt | moment: 'fromNow' }}</div>
+                                            {{ contrat.date_creation | moment: 'fromNow' }}</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>{{ contrat.emmeter}}</td>
-                            <td>{{ contrat.concerned }}</td>
-                            <td>{{ contrat.createdAt | moment: 'MMMM Do YYYY' }}</td>
-                            <td>{{ contrat.value }}$</td>
+                            <td>
+                                <span *ngIf="contrat.prestaId">{{ contrat.prestaId.name }}</span>
+                            </td>
+                            <td>
+                                <span *ngIf="contrat.client.clientId">{{ contrat.client.clientId.name }}</span>
+                            </td>
+                            <td>{{ contrat.date_creation | moment: 'MMMM Do YYYY' }}</td>
+                            <td>{{ contrat.contractReplies.tarif }}$</td>
                             <td>
                                 <span class="status"
-                                    [ngClass]="{ 'actif': contrat.status === 'Actif', 'inactif': contrat.status === 'Inactif', 'suspendu': contrat.status === 'Suspendu', 'pending': contrat.status === 'pending' }">
+                                    [ngClass]="{ 'actif': contrat.status === 'pending', 'inactif': contrat.status === 'Inactif', 'suspendu': contrat.status === 'Suspendu', 'draft': contrat.status === 'draft' }">
                                     {{ contrat.status }}
                                 </span>
                             </td>
@@ -96,7 +103,8 @@
                     </tbody>
 
                 </table>
-                <div *ngIf="filtrerdContracts.length <= 0" style="width: 100%;background-color: white;height: 300px; display: flex;align-items: center;justify-content: center;flex-direction: column;">
+                <div *ngIf="filtrerdContracts.length <= 0"
+                    style="width: 100%;background-color: white;height: 300px; display: flex;align-items: center;justify-content: center;flex-direction: column;">
                     <img src="../../../../../assets/icones/page.png" alt="" style="width: 60px;margin-bottom: 5px;">
                     <p style="font-size: 13px;">Aucun contrat trouvé pour le moment</p>
                 </div>

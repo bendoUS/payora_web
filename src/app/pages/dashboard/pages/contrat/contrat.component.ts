@@ -4,6 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { stat } from 'fs';
 import { ApiService } from '../../../../services/api.service';
 import { filter } from 'rxjs/operators';
+import { ContratService } from '../../../../services/contrat.service';
 
 @Component({
   selector: 'app-contrat',
@@ -30,11 +31,11 @@ export class ContratComponent {
   ];
 
   categories = [
-    { name: 'Contrats actifs', icon: File01Icon, route: 'active', status: true },
-    { name: 'Contrats en cours', icon: Invoice01Icon, route: 'pending', status: false },
-    { name: 'Contrats validé', icon: Agreement01Icon, route: 'validate', status: false },
+    { name: 'Contrats actifs', icon: File01Icon, route: 'pending', status: true },
+    { name: 'Contrats en brouillon', icon: Invoice01Icon, route: 'draft', status: false },
+    { name: 'Contrats validé', icon: Agreement01Icon, route: 'expired', status: false },
     { name: 'Contrats rejetés', icon: RemoveCircleHalfDotIcon, route: 'rejected', status: false },
-    { name: 'Contrats sous litiges', icon: Legal01Icon, route: 'legal', status: false }
+    { name: 'Contrats sous litiges', icon: Legal01Icon, route: 'dispute', status: false }
   ];
   filtrerdContracts: any[] = [];
 
@@ -45,26 +46,34 @@ export class ContratComponent {
   }
 
   userInfo: any = JSON.parse(localStorage.getItem('userInfo') || '{}');
+  userStockedData: any = JSON.parse(localStorage.getItem('userStockData') || '{}')
   userToken: string = localStorage.getItem('userToken') || '';
 
-  selectedCategory: string = "active";
+  selectedCategory: string = "pending";
 
-  constructor(public router: Router, private api: ApiService) {
+  constructor(public router: Router, private api: ApiService, private contratService: ContratService) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         this.maFonctionAuChangementDePage();
       });
   }
-  
+
 
   get isMainPage(): boolean {
     // True si tu es exactement sur /contrat
     return this.router.url === '/dashboard/contrat';
   }
 
-  goToPage(page: any) {
-    this.router.navigate(['/dashboard/contrat/' + page]);
+  goToPage(page: any, contrat: any) {
+    if (page == 'detail') {
+      this.selectContrat(contrat)
+      this.router.navigate(['/dashboard/contrat/' + page, contrat.cid]);
+    }
+    else {
+      this.router.navigate(['/dashboard/contrat/' + page]);
+    }
+
   }
 
   selectCategory(index: number) {
@@ -80,15 +89,15 @@ export class ContratComponent {
   }
 
   ngOnInit() {
+    console.log(this.userStockedData)
     this.userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
     this.getContratList(this.userInfo.uid);
   }
 
   getContratList(uid: string) {
-    this.api.getData('getContrats', { uid }, this.userToken).subscribe({
+    this.api.getData('getContracts', { uid }, this.userToken).subscribe({
       next: (res) => {
-        console.log(res)
-        this.contracts = res;
+        this.contracts = res.contrats;
         this.getContratByStatus()
       },
       error: (err) => {
@@ -101,7 +110,22 @@ export class ContratComponent {
   }
 
   getContratByStatus() {
-    console.log(this.contracts)
-    this.filtrerdContracts = this.contracts.filter((c: { status: string; }) => c.status === this.selectedCategory);
+    this.filtrerdContracts = this.contracts.filter((c: { status: string; }) => {
+      if (this.selectedCategory === 'pending') {
+        return (
+          c.status === 'pending' ||
+          c.status === 'pending_payment' ||
+          c.status === 'accepted'
+        );
+      }
+      else {
+        return c.status === this.selectedCategory
+      }
+    });
+    console.log(this.contracts, this.filtrerdContracts)
+  }
+
+  selectContrat(contrat: any) {
+    this.contratService.setContrat(contrat, 30);
   }
 }

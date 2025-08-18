@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       {
         path: 'contrat', component: ContratComponent, children: [
-          { path: 'detail', component: ContratDetailComponent },
+          { path: 'detail/:id', component: ContratDetailComponent },
           { path: 'create', component: ContratCreateComponent }
         ]
       },

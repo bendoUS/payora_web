@@ -88,6 +88,7 @@ export class LoginComponent {
 
         let userData: any = await this.getUserInfo(result.user.uid, loggedInUser.token, result.user.displayName ?? '', result.user.email ?? '');
         console.log('Données utilisateur récupérées :', userData);
+        localStorage.setItem('userStockData', JSON.stringify(userData))
         localStorage.setItem('userInfo', JSON.stringify(result.user));
 
         if (userData) {

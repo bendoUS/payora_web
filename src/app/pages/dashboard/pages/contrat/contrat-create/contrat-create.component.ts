@@ -19,7 +19,17 @@ export class ContratCreateComponent {
 
   isBrowser: boolean;
   userInfo: any = JSON.parse(localStorage.getItem('userInfo') || '{}');
+  userData: any = {
+    name: this.userInfo.displayName,
+    email: this.userInfo.email,
+    adresse: "",
+    tel: "",
+    uid: this.userInfo.uid
+  }
+  contract_emmitter: string = "presta"
   userToken: string = localStorage.getItem('userToken') || '';
+
+  userStockedData: any = JSON.parse(localStorage.getItem('userStockData') || '{}')
 
   pdfSrc = "https://firebasestorage.googleapis.com/v0/b/discord-mapbox.appspot.com/o/pdf%2F1y2zvk-tx.myshopify.com-2025-02-28T16%3A40%3A28.370Z-Asistent_Virtual%20(1).pdf?alt=media&token=15881377-0529-4d86-bf01-83a4b61153a9"
 
@@ -33,7 +43,7 @@ export class ContratCreateComponent {
     infos: '',
     droits: ''
   }
-  currentStep = 1;
+  currentStep = 4;
   selectedService: any = { icon: BrushIcon, title: 'Design UI/UX', subtitle: 'Contrat lié aux designers graphique', active: true };
   servicesItems: any[] = [
     { icon: BrushIcon, title: 'Design UI/UX', subtitle: 'Contrat lié aux designers graphique', active: true },
@@ -89,7 +99,7 @@ export class ContratCreateComponent {
     }
     if (this.currentStep === 4) {
       this.isLoading = true;
-      this.saveNewContrat('uid'); // Remplace 'uid' par l'ID réel du contrat
+      this.saveNewContrat(); // Remplace 'uid' par l'ID réel du contrat
       setTimeout(() => {
         this.isLoading = false;
         this.showSnackBar('Contrat créé avec succès !');
@@ -188,8 +198,7 @@ export class ContratCreateComponent {
     console.log('User Info:', this.userInfo);
   }
 
-  saveNewContrat(uid: string) {
-    let actualDate = new Date();
+  saveNewContrat() {
 
     let documentElement = {
       preambule: this.preambule,
@@ -197,18 +206,17 @@ export class ContratCreateComponent {
       payoraContract: "¹ Il est recommandé que les modalités habituelles de fonctionnement du cabinet soient précisées à la/au remplaçant(e), dans le souci de la permanence des soins. ² Cette activité personnelle ne devra en aucun cas être préjudiciable à la permanence des soins au sein du cabinet du médecin remplacé(e), activité justificative de l'établissement dudit contrat et ne pourra jamais être une activité de soins donnant lieu à délivrance de feuilles de maladie; ³ il ne peut s'agir que de médecine de prévention, d'examens pour des compagnies d'assurances... qui entrent dans l'activité habituelle de la/du remplaçant(e). Clause facultative, à débattre entre les signataires; elle devra faire l'objet d'une annexe au présent contrat. ⁴ Il serait souhaitable que la copie de cette assurance soit jointe au présent contrat. ⁵ Le taux de rétrocession d'honoraires doit être en rapport avec les charges du cabinet. ⁶ La clause d'arbitrage (clause compromissoire) est facultative et les parties peuvent décider de ne pas y recourir ou encore y recourir dans des conditions différentes de celles proposées ci-dessus. ⁷ Les parties peuvent renoncer à cette modalité de l'arbitrage et, dans ce cas, il suffit de supprimer la mention de l'amiable composition."
     }
 
-    let contractReplies = this.informationsBase
 
     /*let contratData = { title: this.informationsBase.nom, subtitle: this.informationsBase.description, uid: this.userInfo.uid, status: 'pending', createdAt: actualDate.toISOString(), value: this.informationsBase.tarif, emmetter: this.userInfo.displayName, concerned: '-', email: this.userInfo.email }*/
 
     let contratData = {
       documentElement,
       contractRecap: this.recapitulatif,
-      contractReplies,
-      
+      contractReplies: this.informationsBase,
+      prestaId: this.userStockedData._id,
     }
 
-    this.api.getData('setContrats', contratData, this.userToken).subscribe({
+    this.api.postData('setContrats', contratData).subscribe({
       next: (res) => {
         console.log(res)
       },

@@ -1,0 +1,151 @@
+<div class="container">
+    <div *ngIf="invitationExpired === true && showAcceptedPage === false">
+        <div class="expiredCtnr">
+            <div style="text-align: center;">
+                <img src="../../../assets/PNG/Chubbs DrawKit_Vector_Illustrations-07.png" alt="">
+                <p>Cette invitation n'est plus disponible ou a expiré.</p>
+                <p>Demander à l'émetteur du contrat de vous renvoyer un nouveau</p>
+                <a href="/login">Retourné à la connexion</a>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="showContract === true && showAcceptedPage === false">
+        <div class="showContrat">
+            <div class="header">
+                <img src="../../../assets/logo/logo.svg" style="width: 90px;" alt="">
+                <div class="titleConsult">Consultation du contrat</div>
+            </div>
+            <div class="resumCtnr">
+                <div class="titleFtr">Résumé du contrat</div>
+                <p class="alertSubtitle">⚠️ Veuillez lire attentivement avant d'accepter ou refuser un contrat</p>
+                <ul>
+                    <li>
+                        <div class="leftElement">Objet:</div>
+                        <div class="rightElement">Design d'interface utilisateur et d'expérérience utilisateur (UI/UX)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="leftElement">Durée:</div>
+                        <div class="rightElement">3 mois</div>
+                    </li>
+                    <li>
+                        <div class="leftElement">Montant:</div>
+                        <div class="rightElement">1 500$</div>
+                    </li>
+                    <li>
+                        <div class="leftElement">Récapitulatif:</div>
+                        <div class="rightElement">Le contrat définit une prestation de design UI/UX complète, incluant
+                            analyse, création et optimisation, avec un engagement sur la qualité et le suivi. La durée
+                            est fixée à partir de la signature, avec respect des délais et possibilité d’ajustement. La
+                            rémunération est prévue en plusieurs échéances, avec pénalités en cas de retard. Les droits
+                            d’utilisation sont cédés au client après paiement, tandis que le prestataire conserve ses
+                            méthodes. Les deux parties s’engagent à préserver la confidentialité des informations
+                            échangées pendant et après le contrat.</div>
+                    </li>
+                    <li>
+                        <div class="leftElement">Status du contrat:</div>
+                        <div class="rightElement">En attente d'acceptation</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="contratContent">
+                <div class="titleConsult">Contenue du contrat</div>
+                <div class="contratContainerEditor">
+                    <h5 class="contratTitle">Contrat de Prestation de {{ selectedService.title }}</h5>
+                    <p class="contratSubTitle">Ce contrat est conclu entre le Prestataire et le Client aux conditions
+                        suivantes :</p>
+                    <div class="dateCtnr">Établie le 10 aout 2025 par Payora</div>
+
+                    <div class="userInformations">
+                        <h6>Entre les soussignés :</h6>
+                        <div class="prestataire">
+                            <h5>Le prestataire :</h5>
+                            <p>Jeanela Dupont</p>
+                            <p>Adresse : 12 Rue des Lilas, 75010 Paris, France</p>
+                            <p>Téléphone : +33 6 12 34 56 78</p>
+                            <p>Email : contact&#64;payora.io</p>
+                        </div>
+                        <div class="andDiv">ET</div>
+                        <div class="client">
+                            <h5>Client :</h5>
+                            <p>Jean Dupont</p>
+                            <p>Adresse : 45 Avenue des Sciences, 69007 Lyon, France</p>
+                            <p>Téléphone : +33 4 78 90 12 34</p>
+                            <p>Email : jean.dupont&#64;example.com</p>
+                        </div>
+                    </div>
+
+                    <div class="preambuleCtnr">
+                        <h5>PREAMBULE</h5>
+                        <p>Dans le souci de respecter l'obligation déontologique qui est la sienne d'assurer la
+                            permanence des soins et conformément aux dispositions de l'article R.4127-65 du code de la
+                            santé publique (code de déontologie médicale), (non renseigné) a contacté (non renseigné)
+                            pour prendre en charge, lors de la cessation temporaire de son activité professionnelle
+                            habituelle, les patients qui feraient appel à elle/lui.</p>
+                        <p>Pour permettre le bon déroulement de ce remplacement, (non renseigné) met à la disposition de
+                            (non renseigné) son cabinet de consultation, situé au (non renseigné), et son secrétariat.
+                        </p>
+                        <p>Le présent contrat a pour objet de définir les conditions dans lesquelles (non renseigné)
+                            s'engage à assurer le remplacement de (non renseigné) et à prendre en charge ses patients.
+                        </p>
+                    </div>
+
+                    <div class="ArticleCtnr">
+                        <div class="articleEL" *ngFor="let article of articles">
+                            <h5>{{ article.title }}</h5>
+                            <p>{{ article.content }}</p>
+                        </div>
+                    </div>
+
+                    <div class="footerElement">
+                        ¹ Il est recommandé que les modalités habituelles de fonctionnement du cabinet soient précisées
+                        à la/au remplaçant(e), dans le souci de la permanence des soins.
+
+                        ² Cette activité personnelle ne devra en aucun cas être préjudiciable à la permanence des soins
+                        au sein du cabinet du médecin remplacé(e), activité justificative de l'établissement dudit
+                        contrat et ne pourra jamais être une activité de soins donnant lieu à délivrance de feuilles de
+                        maladie;
+
+                        ³ il ne peut s'agir que de médecine de prévention, d'examens pour des compagnies d'assurances...
+                        qui entrent dans l'activité habituelle de la/du remplaçant(e). Clause facultative, à débattre
+                        entre les signataires; elle devra faire l'objet d'une annexe au présent contrat.
+
+                        ⁴ Il serait souhaitable que la copie de cette assurance soit jointe au présent contrat.
+
+                        ⁵ Le taux de rétrocession d'honoraires doit être en rapport avec les charges du cabinet.
+
+                        ⁶ La clause d'arbitrage (clause compromissoire) est facultative et les parties peuvent décider
+                        de ne pas y recourir ou encore y recourir dans des conditions différentes de celles proposées
+                        ci-dessus.
+
+                        ⁷ Les parties peuvent renoncer à cette modalité de l'arbitrage et, dans ce cas, il suffit de
+                        supprimer la mention de l'amiable composition.
+                    </div>
+                </div>
+            </div>
+            <div class="footerBtnCtnr">
+                <div>
+                    <button class="acceptationBtn" (click)="updateContrat('accepter')">Accepter</button>
+                    <button class="refuBtn" (click)="updateContrat('refus')">Refuser</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="haveToLogin === true">Vous devez vous connecter pour consulter le contrat</div>
+
+    <div *ngIf="showAcceptedPage === true">
+        <div class="acceptedCtnr">
+            <div style="text-align: center;">
+                <img src="../../../assets/PNG/Chubbs DrawKit_Vector_Illustrations-08.png" alt="">
+                <p>Félicitation! Vous avez accepté le contrat !</p>
+                <p>Il ne vous reste plus qu'à procéder au paiement pour commencer le projet.</p>
+                <div class="btnCtnrRli" style="display: flex;align-items: center;gap: 10px;width: 100%;justify-content: center;">
+                    <button class="piemNw" (click)="goToPaiement()">Proccéder au paiement</button>
+                    <button class="pyrAftr" (click)="goToDetail()">Payer plus tard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

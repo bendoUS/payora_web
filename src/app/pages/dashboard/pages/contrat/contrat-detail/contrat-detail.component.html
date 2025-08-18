@@ -1,15 +1,27 @@
-<div class="bodyPrincipal">
-    <div class="headerNav">
+<div class="bodyPrincipal" *ngIf="contrat.status && (contrat.prestaId.uid === userInfo.uid || contrat.client.clientId.uid === userInfo.uid)">
+    <div class="headerNav" [ngClass]="{ 'litige': contrat.status === 'dispute', 'rejected': contrat.status === 'rejected' }">
         <div class="leftElement">
-            <hugeicons-icon [icon]="Tick02Icon" [size]="35" color="#004A25" [strokeWidth]="2"></hugeicons-icon>
+            <hugeicons-icon *ngIf="contrat.status !== 'dispute' && contrat.status !== 'rejected'" [icon]="Tick02Icon" [size]="35" [strokeWidth]="2"></hugeicons-icon>
+            <hugeicons-icon *ngIf="contrat.status === 'dispute'" [icon]="Legal01Icon" [size]="35" [strokeWidth]="2"></hugeicons-icon>
+            <hugeicons-icon *ngIf="contrat.status === 'rejected'" [icon]="CancelCircleIcon" [size]="35" [strokeWidth]="2"></hugeicons-icon>
         </div>
         <div class="rightElement">
-            <h6>Suivi du contrat</h6>
-            <p>sur ton smartphone afin de recevoir les notifications push de ton activité, comme les messages,les
-                mentions, les demandes d'amis et les événements.</p>
+            <div *ngIf="contrat.status !== 'dispute' && contrat.status !== 'rejected'">
+                <h6>Suivi du contrat</h6>
+                <p>sur ton smartphone afin de recevoir les notifications push de ton activité, comme les messages,les
+                    mentions, les demandes d'amis et les événements.</p>
+            </div>
+            <div *ngIf="contrat.status === 'dispute'">
+                <h6>Ce contrat a fait l'objet de plusieurs contestations.</h6>
+                <p>Il arrive parfois qu'un client ouvre plusieurs litiges pour  un même paiement. Dans ce cas, chaque litige doit être examiné et traité séparément.</p>
+            </div>
+            <div *ngIf="contrat.status === 'rejected'">
+                <h6>Ce contrat a été rejetté par le client</h6>
+                <p>Il arrive parfois qu'un client ne soit pas en accord avec les termes du contrat que vous lui avez soumis.</p>
+            </div>
         </div>
     </div>
-    <div class="bodyDivs">
+    <div class="bodyDivs" *ngIf="contrat">
         <h4>Recapitulatifs</h4>
         <div class="row">
             <div class="col-6">
@@ -17,15 +29,59 @@
                     <ul>
                         <li>
                             <div class="vaLabel">Valeur du contrat:</div>
-                            <div class="vaValue">25.590$</div>
+                            <div class="vaValue">{{ contrat.contractReplies.tarif }}$</div>
                         </li>
                         <li>
                             <div class="vaLabel">Engagé par:</div>
-                            <div class="vaValue">Selom Goerke</div>
+                            <div class="vaValue">{{ contrat.prestaId.name }}</div>
                         </li>
                         <li>
                             <div class="vaLabel">Contrat initié le:</div>
-                            <div class="vaValue">17 mai 2025 à 14h 43min</div>
+                            <div class="vaValue">{{ contrat.date_creation | moment: 'dateHour' }}</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="valDiv" *ngIf="contrat.prestaId.uid === userInfo.uid">
+                    <h5 class="sutTitle">Informations liées au client</h5>
+                    <ul>
+                        <li>
+                            <div class="vaLabel">Nom du client:</div>
+                            <div class="vaValue" *ngIf="contrat.client.clientId">{{ contrat.client.clientId.name }}</div>
+                            <div class="vaValue" *ngIf="!contrat.client.clientId && contrat.client.name">{{ contrat.client.name }}</div>
+                        </li>
+                        <li>
+                            <div class="vaLabel">adresse:</div>
+                            <div class="vaValue" *ngIf="contrat.client.clientId">{{ contrat.client.clientId.adresse }}</div>
+                        </li>
+                        <li>
+                            <div class="vaLabel">email:</div>
+                            <div class="vaValue" *ngIf="contrat.client.clientId">{{ contrat.client.clientId.email }}</div>
+                            <div class="vaValue" *ngIf="!contrat.client.clientId && contrat.client.email">{{ contrat.client.email }}</div>
+                        </li>
+                        <li>
+                            <div class="vaLabel">Tel:</div>
+                            <div class="vaValue" *ngIf="contrat.client.clientId">{{ contrat.client.clientId.tel }}</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="valDiv" *ngIf="contrat.prestaId.uid !== userInfo.uid">
+                    <h5 class="sutTitle">Informations liées au prestataire</h5>
+                    <ul>
+                        <li>
+                            <div class="vaLabel">Nom du prestataire:</div>
+                            <div class="vaValue" *ngIf="contrat.prestaId">{{ contrat.prestaId.name }}</div>
+                        </li>
+                        <li>
+                            <div class="vaLabel">adresse:</div>
+                            <div class="vaValue" *ngIf="contrat.prestaId">{{ contrat.prestaId.adresse }}</div>
+                        </li>
+                        <li>
+                            <div class="vaLabel">email:</div>
+                            <div class="vaValue" *ngIf="contrat.prestaId">{{ contrat.prestaId.email }}</div>
+                        </li>
+                        <li>
+                            <div class="vaLabel">Tel:</div>
+                            <div class="vaValue" *ngIf="contrat.prestaId">{{ contrat.prestaId.tel }}</div>
                         </li>
                     </ul>
                 </div>
@@ -33,65 +89,98 @@
                     <h5 class="sutTitle">Etat du contrat</h5>
                     <ul>
                         <li>
-                            <div class="vaLabel">Valeur du contrat:</div>
-                            <div class="vaValue">25.590$</div>
+                            <div class="vaLabel ral">Status</div>
+                            <div class="vaValue">{{ contrat.status }}</div>
+                        </li>
+                        <li *ngIf="contrat.date_debut">
+                            <div class="vaLabel ral">Date de début du contrat</div>
+                            <div class="vaValue">{{ contrat.date_debut | moment: 'dateHour' }}</div>
+                        </li>
+                        <li *ngIf="contrat.date_fin">
+                            <div class="vaLabel ral">Date de fin du contrat</div>
+                            <div class="vaValue">{{ contrat.date_fin | moment: 'dateHour' }}</div>
                         </li>
                         <li>
-                            <div class="vaLabel">Engagé par:</div>
-                            <div class="vaValue">Selom Goerke</div>
-                        </li>
-                        <li>
-                            <div class="vaLabel">Contrat initié le:</div>
-                            <div class="vaValue">17 mai 2025 à 14h 43min</div>
+                            <div class="vaLabel ral">Situation actuelle</div>
+                            <div class="vaValue">
+                                <span *ngIf="contrat.status == 'draft'">Contrat en brouillon</span>
+                                <span *ngIf="contrat.status == 'pending'">Contrat en attente d'acceptation</span>
+                                <span *ngIf="contrat.status == 'pending_payment'">Contrat en attente de paiement</span>
+                                <span *ngIf="contrat.status == 'accepted'">Contrat accepté par le client</span>
+                                <span *ngIf="contrat.status == 'rejected'">Contrat rejetté par le client</span>
+                                <span *ngIf="contrat.status == 'canceled'">Contrat en annulé</span>
+                                <span *ngIf="contrat.status == 'expired'">Contrat terminé</span>
+                                <span *ngIf="contrat.status == 'dispute'">Contrat sous litige</span>
+                            </div>
                         </li>
                     </ul>
                 </div>
-                <div class="valDiv">
-                    <h5 class="sutTitle">Etat de la livraison</h5>
-                    <ul>
-                        <li>
-                            <div class="vaLabel ral">Toutes les tâches du contrat sont exécutées.</div>
-                            <div class="vaValue">17 mai 2025 à 14h 43min</div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="uploadDiv">
+                <div class="uploadDiv" *ngIf="contrat.prestaId.uid === userInfo.uid && (contrat.status === 'accepted' || contrat.status === 'expired' || contrat.status === 'dispute')">
                     <h5>Télécharger une preuve de travail</h5>
                     <p>Partagez des preuves claires des tâches que vous avez accomplies, étape par étape.</p>
-                    <div class="icnCtnr">
+                    <div style="display: flex;justify-content: left;width: 100%;">
+                        <div class="icnCtnr">
                         <hugeicons-icon [icon]="Upload03Icon" [size]="25" color="#004A25"
                             [strokeWidth]="2"></hugeicons-icon>
                     </div>
+                    </div>
+                </div>
+                <div class="validateDiv" *ngIf="contrat.prestaId.uid !== userInfo.uid">
+                    <button *ngIf="contrat.status === 'pending_payment'" class="validate" (click)="createPayementContrat()">Procéder au paiement</button>
+                    <button class="consult">Voir le contenu du contrat</button>
                 </div>
             </div>
             <div class="col-6">
-                <div class="actDiv">
+                <div class="actDiv" *ngIf="contrat.prestaId.uid === userInfo.uid && contrat.status === 'accepted'">
                     <h5>Validation de la livraison</h5>
                     <p>Confirmez que votre travail est terminé et informez le client pour qu'il libère le paiement.</p>
                     <button>
-                        <hugeicons-icon [icon]="Tick02Icon" [size]="24" color="#FFF" [strokeWidth]="1.5"></hugeicons-icon>
+                        <hugeicons-icon [icon]="Tick02Icon" [size]="24" color="#FFF"
+                            [strokeWidth]="1.5"></hugeicons-icon>
                         <div>Revendiquer sa mission</div>
                     </button>
                 </div><br>
-                <div class="actDiv">
+                <div class="actDiv" *ngIf="contrat.prestaId.uid !== userInfo.uid && contrat.prestaClaim === true && contrat.status === 'accepted'">
+                    <h5>Validation de la livraison</h5>
+                    <p>Confirmez que le travail est terminé et libérez le paiement.</p>
+                    <button>
+                        <hugeicons-icon [icon]="Tick02Icon" [size]="24" color="#FFF"
+                            [strokeWidth]="1.5"></hugeicons-icon>
+                        <div>Libérer le paiement</div>
+                    </button>
+                </div><br>
+                <div class="actDiv" *ngIf="contrat.prestaId.uid !== userInfo.uid && contrat.status === 'accepted'">
                     <h5>Disputer la livraison</h5>
                     <p>Un problème ? Introduisez un litige et nous vous aiderons à le résoudre de manière équitable.</p>
                     <button class="dispBtn">
-                        <hugeicons-icon [icon]="Alert01Icon" [size]="24" color="#000" [strokeWidth]="1.5"></hugeicons-icon>
-                        <div>Revendiquer sa mission</div>
+                        <hugeicons-icon [icon]="Alert01Icon" [size]="24" color="#000"
+                            [strokeWidth]="1.5"></hugeicons-icon>
+                        <div>Disputer la mission</div>
+                    </button>
+                </div>
+                <div class="actDiv" *ngIf="contrat.status === 'dispute'">
+                    <h5>Contrat sous litige</h5>
+                    <p>Ce contrat a reçu un litige, vous pouvez donc consulter le litige pour voir la décision établie par payora.</p>
+                    <button class="dispBtn">
+                        <hugeicons-icon [icon]="Alert01Icon" [size]="24" color="#000"
+                            [strokeWidth]="1.5"></hugeicons-icon>
+                        <div>Voir le litige</div>
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footerCtnr">
+    <div *ngIf="(contrat.status === 'draft' || contrat.status === 'pending') && contrat.prestaId.uid === userInfo.uid" class="footerCtnr">
         <h5 class="ftrTitle">Partager le contrat</h5>
         <p class="ftrSubText">Partagez des preuves claires des tâches que vous avez accomplies, étape par étape.</p>
         <div class="shareelements">
-            <qrcode *ngIf="isBrowser" [qrdata]="'Your data string'" [width]="80" [colorLight]="'red'" [colorDark]="'#000000'"></qrcode>
-            <button class="clip">
+            <!--button class="clip">
                 <hugeicons-icon [icon]="Copy01Icon" [size]="25" color="#004A25" [strokeWidth]="1.5"></hugeicons-icon>
                 <div>https://invoice.payora.io/fjbvufebv</div>
+            </button-->
+            <button (click)="openDialog()" class="sendCls">
+                <span *ngIf="contrat.status === 'draft'">Envoyé directement à un client</span>
+                <span *ngIf="contrat.status === 'pending'">Envoyé ce contrat à un autre client</span>
             </button>
         </div>
     </div>

@@ -78,38 +78,27 @@
                 <table class="custom-table">
                     <thead>
                         <tr>
-                            <th>Titre du contract</th>
-                            <th>Concerné</th>
+                            <th>Référence</th>
+                            <th>Nom du contrat</th>
+                            <th>Montant</th>
+                            <th>Statut</th>
                             <th>Date de création</th>
-                            <th>Valeur du contrat</th>
-                            <th>États du contrat</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let user of users" (click)="goToPage('detail')">
+                        <tr *ngFor="let transaction of transactions" (click)="goToPage('detail')">
                             <td>
-                                <div class="leftIconStepElem">
-                                    <hugeicons-icon [icon]="FileEmpty01Icon" [size]="22" color="#222325"
-                                        [strokeWidth]="1.5"></hugeicons-icon>
-                                    <div>
-                                        <div style="font-weight: 600;font-size: 13px;margin-bottom: 5px;">{{ user.name
-                                            }}</div>
-                                        <div style="color: rgb(102, 102, 102);font-size: 11px;">Mise à jour le:
-                                            07-07-2025</div>
-                                    </div>
-                                </div>
+                                {{ transaction.tid }}
                             </td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.role }}</td>
-                            <td>
-                                5000$
-                            </td>
+                            <td>{{ transaction.contractId.contractReplies.nom }}</td>
+                            <td>{{ transaction.montant }}$</td>
                             <td>
                                 <span class="status"
-                                    [ngClass]="{ 'actif': user.status === 'Actif', 'inactif': user.status === 'Inactif', 'suspendu': user.status === 'Suspendu' }">
-                                    {{ user.status }}
+                                    [ngClass]="{ 'actif': transaction.status === 'Actif', 'inactif': transaction.status === 'Inactif', 'suspendu': transaction.status === 'Suspendu' }">
+                                    {{ transaction.status }}
                                 </span>
                             </td>
+                            <td>{{ transaction.createdAt | moment: 'dateHour'}}</td>
                         </tr>
                     </tbody>
                 </table>
