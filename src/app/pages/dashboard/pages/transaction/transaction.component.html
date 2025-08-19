@@ -5,7 +5,7 @@
             <p>Consultez, filtrez et gérez tous vos contrats en cours. Suivez leur état et leur valeur en temps réel.
             </p>
         </div>
-        <div class="bordFirstelement">
+        <div class="bordFirstelement" *ngIf="transactions">
             <div class="row">
                 <div class="col-4">
                     <div class="boardFirstcard">
@@ -18,7 +18,7 @@
                         </div>
                         <div class="cardCtntElem">
                             <div>
-                                <h2>$120,873</h2>
+                                <h2>{{ transactions.length }}</h2>
                             </div>
                             <div class="footerBottomCard">
                                 <div class="footerLeftBtn">
@@ -39,7 +39,7 @@
                         </div>
                         <div class="cardCtntElem">
                             <div>
-                                <h2>89</h2>
+                                <h2>-</h2>
                             </div>
                             <div class="footerBottomCard">
                                 <div class="footerLeftBtn">
@@ -60,7 +60,7 @@
                         </div>
                         <div class="cardCtntElem">
                             <div>
-                                <h2>$120,873</h2>
+                                <h2>-</h2>
                             </div>
                             <div class="footerBottomCard">
                                 <div class="footerLeftBtn">
@@ -86,7 +86,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let transaction of transactions" (click)="goToPage('detail')">
+                        <tr *ngFor="let transaction of transactions" (click)="goToPage('detail', transaction.tid)">
                             <td>
                                 {{ transaction.tid }}
                             </td>

@@ -11,6 +11,7 @@ import { LitigeComponent } from './pages/litige/litige.component';
 import { ContratDetailComponent } from './pages/contrat/contrat-detail/contrat-detail.component';
 import { ContratCreateComponent } from './pages/contrat/contrat-create/contrat-create.component';
 import { TransactionDetailComponent } from './pages/transaction/transaction-detail/transaction-detail.component';
+import { LitigeDetailComponent } from './pages/litige/litige-detail/litige-detail.component';
 
 const routes: Routes = [
   {
@@ -24,14 +25,19 @@ const routes: Routes = [
           { path: 'create', component: ContratCreateComponent }
         ]
       },
-      { path: 'transaction', component: TransactionComponent, children: [
-          { path: 'detail', component: TransactionDetailComponent }
+      {
+        path: 'transaction', component: TransactionComponent, children: [
+          { path: 'detail/:id', component: TransactionDetailComponent }
         ]
-       },
+      },
       { path: 'accounting', component: AccountingComponent },
       { path: 'affiliate', component: AffiliateComponent },
       { path: 'lawyer', component: LawyerComponent },
-      { path: 'litige', component: LitigeComponent }
+      {
+        path: 'litige', component: LitigeComponent, children: [
+          { path: 'detail/:id', component: LitigeDetailComponent }
+        ]
+      }
     ]
   }
 ];

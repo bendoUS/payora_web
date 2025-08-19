@@ -1,70 +1,51 @@
 <div class="container">
-    <div class="dashHeader">
-        <h3>Litiges</h3>
-        <p>Gérez vos litiges en cours et suivez leur statut en temps réel.</p>
+    <div *ngIf="isMainPage">
+        <div class="dashHeader">
+            <h3>Litiges</h3>
+            <p>Gérez vos litiges en cours et suivez leur statut en temps réel.</p>
+        </div>
+
+        <div class="dashSelectorElements">
+            <div *ngFor="let categorie of categories; let i = index" class="dashElementsItem"
+                [ngClass]="{ 'firstChild': categorie.status === true }" (click)="selectCategory(i)">
+                <hugeicons-icon [icon]="categorie.icon" [size]="24" color="#000000"
+                    [strokeWidth]="1.5"></hugeicons-icon>
+                {{ categorie.name }}
+            </div>
+        </div>
+
+        <div class="dashboardFooter">
+            <div class="table-container">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>ID du litige</th>
+                            <th>Contrat associée</th>
+                            <th>Montant contesté</th>
+                            <th>Date de création</th>
+                            <th>Statut du litige</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let litige of filtrerdLitiges">
+                            <td>#{{ litige.lid }}</td>
+                            <td>{{ litige.contratId.contractReplies.nom }}</td>
+                            <td>{{ litige.contratId.contractReplies.tarif }}$</td>
+                            <td>{{ litige.createdAt | moment: 'dateHour' }}</td>
+                            <td>
+                                <span class="status"
+                                    [ngClass]="{ 'actif': litige.status === 'ouvert', 'inactif': litige.status === 'en_cours', 'suspendu': litige.status === 'rembourse', 'suspendue': litige.status === 'perdu' }">
+                                    {{ litige.status }}
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-    <div class="dashSelectorElements">
-        <div class="firstChild dashElementsItem">
-            <hugeicons-icon [icon]="BubbleChatNotificationIcon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-            Réponses nécessaires
-        </div>
-        <div class="dashElementsItem">
-            <hugeicons-icon [icon]="FileSyncIcon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-            En cours de vérification
-        </div>
-        <div class="dashElementsItem">
-            <hugeicons-icon [icon]="Legal01Icon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-            Tous les litiges
-        </div>
-        <div class="dashElementsItem">
-            <hugeicons-icon [icon]="FileValidationIcon" [size]="24" color="#000000"
-                [strokeWidth]="1.5"></hugeicons-icon>
-            Remportés
-        </div>
-        <div class="dashElementsItem">
-            <hugeicons-icon [icon]="RemoveCircleHalfDotIcon" [size]="24" color="#000000" [strokeWidth]="1.5"></hugeicons-icon>
-            Perdus
-        </div>
-    </div>
-
-    <div class="dashboardFooter">
-        <div class="table-container">
-            <table class="custom-table">
-                <thead>
-                    <tr>
-                        <th>Titre du contract</th>
-                        <th>Concerné</th>
-                        <th>Date de création</th>
-                        <th>Valeur du contrat</th>
-                        <th>États du contrat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let user of users">
-                        <td>
-                            <div class="leftIconStepElem">
-                                <hugeicons-icon [icon]="FileEmpty01Icon" [size]="22" color="#222325" [strokeWidth]="1.5"></hugeicons-icon>
-                                <div>
-                                    <div style="font-weight: 600;font-weight: 16px;margin-bottom: 5px;">{{ user.name }}</div>
-                                    <div style="color: rgb(102, 102, 102);font-size: 13px;">Mise à jour le: 07-07-2025</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.role }}</td>
-                        <td>
-                            5000$
-                        </td>
-                        <td>
-                            <span class="status"
-                                [ngClass]="{ 'actif': user.status === 'Actif', 'inactif': user.status === 'Inactif', 'suspendu': user.status === 'Suspendu' }">
-                                {{ user.status }}
-                            </span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div *ngIf="!isMainPage">
+        <router-outlet></router-outlet>
     </div>
 </div>

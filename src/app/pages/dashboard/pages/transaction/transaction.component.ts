@@ -42,8 +42,8 @@ export class TransactionComponent {
     return this.router.url === '/dashboard/transaction';
   }
 
-  goToPage(page: any) {
-    this.router.navigate(['/dashboard/transaction/'+page]);
+  goToPage(page: any, tid: string) {
+    this.router.navigate(['/dashboard/transaction/'+page + '/'+tid]);
   }
 
   ngOnInit() {

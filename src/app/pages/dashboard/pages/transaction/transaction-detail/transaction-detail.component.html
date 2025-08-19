@@ -1,65 +1,67 @@
-<div class="bodyPrincipal">
+<div class="bodyPrincipal" *ngIf="transaction">
     <div class="rightElementDiv">
         <div class="contentElementCtnr">
             <div class="iconValDivCtnr">
                 <img src="../../../../../../assets/icones/termine.png" alt="">
             </div>
-            <h5>Your timesheet is on its way for approval!</h5>
-            <p>We've sent it to your clients and are just waiting on their approval to get you paid.</p>
-            <button (click)="goToPage('dashboard/transaction')">Got it</button>
+            <h5>Votre paiement a bien été reçu 🎉</h5>
+            <p>Votre transaction a été effectuée avec succès. Merci pour votre confiance.</p>
+            <button (click)="goToPage('dashboard/transaction')">Retour à l’accueil</button>
         </div>
     </div>
     <div class="leftElementDiv">
         <div class="closeElementCtnr">
             <button (click)="goToPage('dashboard/transaction')"><hugeicons-icon [icon]="Cancel01Icon" [size]="16" [strokeWidth]="1.5"></hugeicons-icon></button>
         </div>
-        <h5 class="title">Transaction summary</h5>
+        <h5 class="title">Résumé de la transaction</h5>
 
         <div class="DtlsElementDiv">
             <h6 class="title">Client</h6>
-            <p class="subtitle">ONE Collective GmbH</p>
+            <p class="subtitle">{{ transaction.name_client }}</p>
         </div>
         <div class="DtlsElementDiv">
-            <h6 class="title">Task</h6>
-            <p class="subtitle">Product Design</p>
+            <h6 class="title">Projet</h6>
+            <p class="subtitle">{{ transaction.contractId.contractReplies.nom }}</p>
         </div>
         <div class="DtlsElementDiv">
             <h6 class="title">Type de transaction</h6>
-            <p class="subtitle">Encaissement</p>
+            <p class="subtitle">
+                <span *ngIf="transaction.transaction_type === 'payement'">Encaissement</span>
+                <span *ngIf="transaction.transaction_type === 'transfer'">Virement</span>
+            </p>
         </div>
 
         <div class="recapBoard">
-            <div class="itemElement">
-                <div class="leftElement">Monday, 7 May 2024</div>
-                <div class="rightElement">Checkout créer</div>
+            <div class="itemElement" *ngFor="let step of transaction.steps">
+                <div class="leftElement">{{ step.date | moment: ''}}</div>
+                <div class="rightElement">
+                    <span *ngIf="step.value === 'creation'">Checkout créer</span>
+                    <span *ngIf="step.value === 'validation'">Checkout validé</span>
+                    <span *ngIf="step.value === 'paid'">Paiement effectué</span>
+                </div>
             </div>
-            <div class="itemElement">
-                <div class="leftElement">Monday, 9 May 2024</div>
-                <div class="rightElement">Checkout validé</div>
+            <div class="totalDiv">
+                <span *ngIf="transaction.status === 'valid'">Transaction validé</span>
+                <span *ngIf="transaction.status !== 'valid'">Un problème est survenue lors de cette transaction</span>
             </div>
-            <div class="itemElement">
-                <div class="leftElement">Monday, 11 May 2024</div>
-                <div class="rightElement">Paiement effectué</div>
-            </div>
-            <div class="totalDiv">Transaction validé</div>
         </div>
 
         <div class="recapBoardBRE">
             <div class="itemElement">
-                <div class="leftElement">8 Hours of Work</div>
-                <div class="rightElement">$1,445.00</div>
+                <div class="leftElement">Facture</div>
+                <div class="rightElement">{{ transaction.contractId.contractReplies.tarif  }}$</div>
             </div>
             <div class="itemElement">
                 <div class="leftElement">Service fee <button><hugeicons-icon [icon]="AlertDiamondIcon" [size]="14" [strokeWidth]="1"></hugeicons-icon></button> </div>
-                <div class="rightElement">$15.00</div>
+                <div class="rightElement">{{ transaction.fees }}$</div>
             </div>
             <div class="itemElement removeBorder">
                 <div class="leftElement" style="color: #000;">Total</div>
-                <div class="rightElement">$1460.00</div>
+                <div class="rightElement">{{ transaction.montant }}$</div>
             </div>
         </div>
         <div class="footerBordRigh">
-            <h5>1460$</h5>
+            <h5>{{ transaction.montant }}$</h5>
         </div>
     </div>
 </div>

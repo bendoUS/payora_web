@@ -1,6 +1,6 @@
 .bodyPrincipal {
     width: 100%;
-    height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
     background-color: #FFF;
     border-radius: 20px;
     display: flex;
@@ -8,6 +8,7 @@
 
     .rightElementDiv{
         height: 100%;
+        padding-top: 15%;
         width: 50%;
 
         .contentElementCtnr{
@@ -86,7 +87,7 @@
             }
             p.subtitle{
                 font-size: 13px;
-                font-weight: 600;
+                font-weight: 500;
             }
         }
         .recapBoard{
@@ -107,7 +108,7 @@
                     color: #606060;
                 }
                 .rightElement{
-                    font-weight: 600;
+                    font-weight: 500;
                 }
             }
             .totalDiv{

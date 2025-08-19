@@ -22,13 +22,7 @@ export class ContratComponent {
   RemoveCircleHalfDotIcon = RemoveCircleHalfDotIcon;
   Legal01Icon = Legal01Icon;
 
-  contracts: any = [
-    //{ name: 'Alice Dupont', email: 'alice@mail.com', role: 'Admin', status: 'Actif' },
-    /*{ name: 'Bob Martin', email: 'bob@mail.com', role: 'Utilisateur', status: 'Inactif' },
-    { name: 'David Blanchard', email: 'david@mail.com', role: 'Utilisateur', status: 'Suspendu' },
-    { name: 'Alice Dupont', email: 'alice@mail.com', role: 'Admin', status: 'Actif' },
-    { name: 'Alice Dupont', email: 'alice@mail.com', role: 'Admin', status: 'Actif' }*/
-  ];
+  contracts: any = [];
 
   categories = [
     { name: 'Contrats actifs', icon: File01Icon, route: 'pending', status: true },

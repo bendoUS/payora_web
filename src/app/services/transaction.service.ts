@@ -7,7 +7,7 @@ import { ApiService } from './api.service';
 })
 export class TransactionService {
   private transactionSource = new BehaviorSubject<any>(this.getFromStorage());
-  contrat$ = this.transactionSource.asObservable();
+  transaction$ = this.transactionSource.asObservable();
 
   userToken: string = localStorage.getItem('userToken') || '';
 
@@ -43,9 +43,9 @@ export class TransactionService {
   }
 
 
-  async loadContratFromServer(contratId: string) {
+  async loadContratFromServer(tid: string) {
     try {
-      this.api.getData('getContrat', { contratId }, this.userToken).subscribe({
+      this.api.getData('getTransaction', { tid }, this.userToken).subscribe({
         next: (res) => {
           console.log(res)
           if (res) {
